@@ -22,9 +22,9 @@
 unsigned long previousMillis = 0;
 
 //wifi
-const char* ssid       = "WiFi";
-const char* password   = "Lokomotive132";
-String openWeatherMapApiKey = "467236d17fdfc652af154eb837422f8d";
+const char* ssid       = "xx";
+const char* password   = "xx";
+String openWeatherMapApiKey = "xx";
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = 3600;//
 const int   daylightOffset_sec = 3600;//
