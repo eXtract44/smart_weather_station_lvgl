@@ -16,8 +16,8 @@
 extern I2C_HandleTypeDef hi2c3;
 extern VL53L0X sensor1;//Struct in "VL53L0X.h"
 
-#define STEP_RANGE 15 // in cm
-#define MAX_RANGE 50 // in cm
+#define STEP_RANGE 12 // in cm
+#define MAX_RANGE STEP_RANGE * 2 + 1 // in cm
 uint16_t vl53_read_cm(){
 	uint16_t distance_cm = readRangeContinuousMillimeters(&sensor1) / 10;
 	if(distance_cm > MAX_RANGE)distance_cm = MAX_RANGE;
