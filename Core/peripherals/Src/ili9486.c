@@ -12,7 +12,7 @@ float map_ili(float x, float in_min, float in_max, float out_min, float out_max)
 }
 void ILI9486_SetBrightness_Auto()
 {
-	uint16_t temp = (uint16_t)(map_ili(temt6000_read(), 0, 600, 50, 100));
+	uint16_t temp = (uint16_t)(map_ili(temt6000_read(), 35, 360, 5, 100));
 	ILI9486_SetBrightness(temp);
 }
 void ILI9486_SetBrightness(uint8_t brightness)
