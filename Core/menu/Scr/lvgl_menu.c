@@ -14,6 +14,8 @@
 static lv_meter_indicator_t *indic_co2;
 
 char string_buffer[20];
+#define MAX_VALUE_CO2 2400
+#define MIN_VALUE_CO2 400
 
 #define NUMBERS_OF_FONTS 3+1
 const lv_font_t *font[NUMBERS_OF_FONTS];
@@ -167,7 +169,7 @@ static lv_obj_t* create_chart(lv_obj_t *screen, lv_coord_t w, lv_coord_t h, lv_a
 	lv_obj_set_size(chart, w, h);
 	lv_obj_align(chart, align, x_ofs, y_ofs);
 	lv_chart_set_div_line_count(chart, 6, 9);
-	lv_chart_set_range(chart, LV_CHART_AXIS_PRIMARY_Y, 400, 2400);
+	lv_chart_set_range(chart, LV_CHART_AXIS_PRIMARY_Y, MIN_VALUE_CO2, MAX_VALUE_CO2);
 	//lv_chart_set_axis_tick(chart, LV_CHART_AXIS_PRIMARY_Y, 5, 3, 12,2,true, 40);
 	ser_co2 = lv_chart_add_series(chart, lv_palette_main(LV_PALETTE_BROWN), LV_CHART_AXIS_PRIMARY_Y);
 
@@ -469,6 +471,35 @@ static void create_block_top_middle() {
 	lv_obj_add_style(lv_object[VALUE_CO2_INSIDE], &style[STYLE_TEXT_LARGE], 0);
 	/*BLOCK TOP MID*/
 }
+static void create_block_top_right() {
+	/*STYLES*/
+	static lv_style_t style_bg_top_right;
+	lv_style_init(&style_bg_top_right);
+	lv_style_set_bg_color(&style_bg_top_right, lv_palette_lighten(LV_PALETTE_GREEN, 1));
+	/*BLOCK TOP RIGHT*/
+	const int16_t time_offset_y = 53;
+	para_t bg_top_right = { .width = 150, .height = 130, .align = LV_ALIGN_TOP_LEFT, .x_ofs = 320, .y_ofs = 30 };
+	para_t time_ = { .align = LV_ALIGN_TOP_LEFT, .x_ofs = 316, .y_ofs = 36 };
+
+	lv_object[BACKGROUND_CLOCK_VALUES] = create_background(lv_object[SCREEN_MAIN_MENU], bg_top_right.width,
+			bg_top_right.height, bg_top_right.align, bg_top_right.x_ofs, bg_top_right.y_ofs);
+	lv_obj_add_style(lv_object[BACKGROUND_CLOCK_VALUES], &style_bg_top_right, 0);
+
+	create_text("time", lv_object[SCREEN_MAIN_MENU], STYLE_TEXT_SMALL, bg_top_right.align, bg_top_right.x_ofs + 55,
+			bg_top_right.y_ofs - 20);
+
+	lv_object[TIME_HOUR_MINUTE] = create_label(lv_object[SCREEN_MAIN_MENU], "00:00", time_.align, time_.x_ofs,
+			time_.y_ofs);
+	lv_obj_add_style(lv_object[TIME_HOUR_MINUTE], &style[STYLE_TEXT_VERY_LARGE], 0);
+
+	lv_object[TIME_MDAY_MONTH] = create_label(lv_object[SCREEN_MAIN_MENU], "00.00", time_.align, time_.x_ofs,
+			time_.y_ofs + time_offset_y);
+	lv_obj_add_style(lv_object[TIME_MDAY_MONTH], &style[STYLE_TEXT_VERY_LARGE], 0);
+
+	lv_object[TIME_WDAY] = create_label(lv_object[SCREEN_MAIN_MENU], "load...", time_.align, time_.x_ofs + 70,
+			time_.y_ofs + time_offset_y * 2 - 5);
+	/*BLOCK TOP RIGHT*/
+}
 static void create_block_bot_left() {
 	/*STYLES*/
 	static lv_style_t style_bg_bot_left;
@@ -553,35 +584,6 @@ static void create_block_bot_middle() {
 			symbol_notification.x_ofs + symbol_notification.width * 3 + 16, symbol_notification.y_ofs);
 	/*BLOCK BOT MID*/
 }
-static void create_block_top_right() {
-	/*STYLES*/
-	static lv_style_t style_bg_top_right;
-	lv_style_init(&style_bg_top_right);
-	lv_style_set_bg_color(&style_bg_top_right, lv_palette_lighten(LV_PALETTE_GREEN, 1));
-	/*BLOCK TOP RIGHT*/
-	const int16_t time_offset_y = 53;
-	para_t bg_top_right = { .width = 150, .height = 130, .align = LV_ALIGN_TOP_LEFT, .x_ofs = 320, .y_ofs = 30 };
-	para_t time_ = { .align = LV_ALIGN_TOP_LEFT, .x_ofs = 316, .y_ofs = 36 };
-
-	lv_object[BACKGROUND_CLOCK_VALUES] = create_background(lv_object[SCREEN_MAIN_MENU], bg_top_right.width,
-			bg_top_right.height, bg_top_right.align, bg_top_right.x_ofs, bg_top_right.y_ofs);
-	lv_obj_add_style(lv_object[BACKGROUND_CLOCK_VALUES], &style_bg_top_right, 0);
-
-	create_text("time", lv_object[SCREEN_MAIN_MENU], STYLE_TEXT_SMALL, bg_top_right.align, bg_top_right.x_ofs + 55,
-			bg_top_right.y_ofs - 20);
-
-	lv_object[TIME_HOUR_MINUTE] = create_label(lv_object[SCREEN_MAIN_MENU], "00:00", time_.align, time_.x_ofs,
-			time_.y_ofs);
-	lv_obj_add_style(lv_object[TIME_HOUR_MINUTE], &style[STYLE_TEXT_VERY_LARGE], 0);
-
-	lv_object[TIME_MDAY_MONTH] = create_label(lv_object[SCREEN_MAIN_MENU], "00.00", time_.align, time_.x_ofs,
-			time_.y_ofs + time_offset_y);
-	lv_obj_add_style(lv_object[TIME_MDAY_MONTH], &style[STYLE_TEXT_VERY_LARGE], 0);
-
-	lv_object[TIME_WDAY] = create_label(lv_object[SCREEN_MAIN_MENU], "xx", time_.align, time_.x_ofs + 70,
-			time_.y_ofs + time_offset_y * 2 - 5);
-	/*BLOCK TOP RIGHT*/
-}
 static void create_block_bot_right() {
 	/*BLOCK BOT RIGHT*/
 	para_t symbol_weather = { .align = LV_ALIGN_TOP_LEFT, .x_ofs = 335, .y_ofs = 170 };
@@ -605,6 +607,7 @@ static void create_block_bot_right() {
 	lv_object[IMAGE_SNOW_1] = create_anim_image_snow_zoom(lv_object[SCREEN_MAIN_MENU], 50, symbol_weather.align,
 			symbol_weather.x_ofs + 60, symbol_weather.y_ofs + 80);
 
+	lv_obj_add_flag(lv_object[IMAGE_MOON], LV_OBJ_FLAG_HIDDEN);
 	lv_obj_add_flag(lv_object[IMAGE_SUN], LV_OBJ_FLAG_HIDDEN);
 	lv_obj_add_flag(lv_object[IMAGE_CLOUD], LV_OBJ_FLAG_HIDDEN);
 	lv_obj_add_flag(lv_object[IMAGE_CLOUD_1], LV_OBJ_FLAG_HIDDEN);
@@ -633,7 +636,6 @@ void draw_menu_main() {
 }
 void draw_weather() {
 	static uint8_t status_cloud_old, status_wind_old, status_rain_old, status_snow_old = 254;
-
 	if (read_weather_clouds() != status_cloud_old) { /*CLOUDS SUN/MOON*/
 		if (read_weather_clouds() < 20) {
 			lv_obj_add_flag(lv_object[IMAGE_CLOUD], LV_OBJ_FLAG_HIDDEN); // off
@@ -643,7 +645,6 @@ void draw_weather() {
 			} else {
 				lv_obj_clear_flag(lv_object[IMAGE_MOON], LV_OBJ_FLAG_HIDDEN); // on
 			}
-
 		} else if (read_weather_clouds() > 20 && read_weather_clouds() < 60) {
 			lv_obj_add_flag(lv_object[IMAGE_CLOUD_1], LV_OBJ_FLAG_HIDDEN);
 			lv_obj_clear_flag(lv_object[IMAGE_CLOUD], LV_OBJ_FLAG_HIDDEN);
@@ -750,7 +751,7 @@ void draw_symbol_volume() {
 	DFPlayer_setVolume(read_potentiometer());
 }
 void distance_handle() {
-	static uint16_t cnt_activate_0, cnt_activate_1 = 0;
+	static uint16_t cnt_activate_0, cnt_activate_1, cnt_bri_update = 0;
 	if (range_read() == 0) { /*standby on*/
 		turn_led_off();
 		cnt_activate_0++;
@@ -758,7 +759,12 @@ void distance_handle() {
 			ILI9486_SetBrightness(0);
 			cnt_activate_0 = 1001;
 		} else {
-			ILI9486_SetBrightness_Auto();
+			cnt_bri_update++;
+			if (cnt_bri_update > 10) {
+				ILI9486_SetBrightness_Auto();
+				cnt_bri_update = 0;
+			}
+
 			cnt_activate_1 = 0;
 		}
 	} else if (range_read() == 1) { /*display on,standby off*/
@@ -767,11 +773,13 @@ void distance_handle() {
 		if (cnt_activate_1 > 2) {
 			cnt_activate_0 = 0;
 			cnt_activate_1 = 0;
+			//if (cnt_activate_0 > 1000) {
 			DFPlayer_playFolder(2, 12);
 			//ILI9486_SetBrightness_Auto();
 			ILI9486_SetBrightness(100);
+			//}
 		}
-	}else if (range_read() == 2) {
+	} else if (range_read() == 2) {
 		toggle_led();
 	}
 }
@@ -801,50 +809,64 @@ static void timer_50(lv_timer_t *timer) {
 	LV_UNUSED(timer);
 	esp_read();
 }
-static void timer_2000(lv_timer_t *timer) {
-	LV_UNUSED(timer);
+void update_block_top_left() {
 	aht10_read();
 	sgp30_read();
-
 	print_value("%.1f", read_temperature_aht10(), lv_object[VALUE_TEMPERATURE_INSIDE]);
 	print_value("%.f %%", read_humidity_aht10(), lv_object[VALUE_HUMIDITY_INSIDE]);
 	print_value("%.f ppm", read_tvoc_sgp30(), lv_object[VALUE_TVOC_INSIDE]);
 	print_value("%.f lux", temt6000_read(), lv_object[VALUE_BRIGHTNESS_INSIDE]);
-
+}
+void update_block_top_middle() {
+	print_value("%.f", read_co2_sgp30(), lv_object[VALUE_CO2_INSIDE]);
+	lv_meter_set_indicator_value(lv_object[METER_CO2_MAIN_MENU], indic_co2, read_co2_sgp30());
+}
+void update_block_top_right() {
+	static uint8_t cnt_time_delay = 30;
+	cnt_time_delay--;
+	if (cnt_time_delay == 0) {
+		print_time(read_time_hour(), read_time_minute());
+		print_mday(read_time_mday(), read_time_month());
+		print_wday(read_time_wday());
+		cnt_time_delay = 1;
+	}
+}
+void update_block_bot_left() {
 	print_value("%.1f", read_weather_temperature(), lv_object[VALUE_TEMPERATURE_OUTSIDE]);
 	print_value("%.f %%", read_weather_humidity(), lv_object[VALUE_HUMIDITY_OUTSIDE]);
 	print_value("%.1f m/s", read_weather_wind(), lv_object[VALUE_WIND_OUTSIDE]);
 	print_value("%.f hPa", read_weather_press(), lv_object[VALUE_PRESS_OUTSIDE]);
-
-	print_time(read_time_hour(), read_time_minute());
-	print_mday(read_time_mday(), read_time_month());
-	print_wday(read_time_wday());
-
+}
+void update_block_bot_middle() {
 	static uint16_t cnt_chart_co2 = 0;
-
 	cnt_chart_co2++; // 1 tick == 2 sec
 	if (cnt_chart_co2 > 1800) { // equal 1 hour
-		lv_chart_set_next_value(lv_object[CHART_CO2_MAIN_MENU], ser_co2, read_co2_sgp30());
+		uint16_t temp_co2_chart = read_co2_sgp30();
+		if (temp_co2_chart > MAX_VALUE_CO2)
+			temp_co2_chart = MAX_VALUE_CO2;
+		lv_chart_set_next_value(lv_object[CHART_CO2_MAIN_MENU], ser_co2, temp_co2_chart);
 		cnt_chart_co2 = 0;
-	}
-
-	print_value("%.f", read_co2_sgp30(), lv_object[VALUE_CO2_INSIDE]);
-
-	lv_meter_set_indicator_value(lv_object[METER_CO2_MAIN_MENU], indic_co2, read_co2_sgp30());
-
-	static uint16_t cnt_weather = 0;
-	if (cnt_weather == 0) {
-			draw_weather();
-		}
-	 // 1 tick == 2 sec
-		cnt_weather++;
-	if (cnt_weather > 120) { /////////////////////////////////////////////////////////////////////// equal 4 min
-		draw_weather();
-		cnt_weather = 1;
 	}
 	draw_symbol_battery();
 	draw_symbol_wifi();
 	draw_symbol_volume();
+}
+void update_block_bot_right() {
+	static uint16_t cnt_weather = 0;
+	cnt_weather++;
+	if (cnt_weather > 120) { /////////////////////////////////////////////////////////////////////// equal 4 min
+		draw_weather();
+		cnt_weather = 0;
+	}
+}
+static void timer_2000(lv_timer_t *timer) {
+	LV_UNUSED(timer);
+	update_block_top_left();
+	update_block_top_middle();
+	update_block_top_right();
+	update_block_bot_left();
+	update_block_bot_middle();
+	update_block_bot_right();
 }
 
 static void init_fonts() {
