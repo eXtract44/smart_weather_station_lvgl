@@ -1,6 +1,7 @@
 # smart_weather_station_lvgl
 
-![new1](https://github.com/eXtract44/smart_weather_station_lvgl/assets/71541578/6540c76e-0605-4952-a212-15f434dbf2c2)
+
+![new](https://github.com/eXtract44/smart_weather_station_lvgl/assets/71541578/53ff4e50-0277-4bec-ab06-445703acdcb9)
 
 Project Smart Weather Station: 
 
@@ -22,11 +23,20 @@ Key Features: /n
 
 -MP3 modul for sounds dfu player mini with SD card onboard (UART)
 
+-Volume control with potentiometer (ADC)
+
 -Battery 18650 with BMS 1S + TP5100 for charging management for mobility
 
 
 -UI with LVGL V8.0
 
--WiFi Weather with Symbols for your city
+
+
+-WiFi Weather based on "openweathermap" with Symbols for your city
 
 -Wifi Date
+
+-C02 history 24h
+
+
+
