@@ -2,11 +2,11 @@
 
 ![new1](https://github.com/eXtract44/smart_weather_station_lvgl/assets/71541578/6540c76e-0605-4952-a212-15f434dbf2c2)
 
-Project Smart Weather Station: 
+Project Smart Weather Station: /n
 
-Key Features: 
--Based on powerful MCU STM32F446VET6 and ESP8266 WiFi onboard
--TFT Display 3.5" ILI9486 (8-bit FSMC)
+Key Features: /n
+-Based on powerful MCU STM32F446VET6 and ESP8266 WiFi onboard/n
+-TFT Display 3.5" ILI9486 (8-bit FSMC)/n
 
 -Temperature and humidity measuring with sensor AHT10 (I2C) 
 -CO2 and TVOC measuring with sensor SGP30 (I2C)
