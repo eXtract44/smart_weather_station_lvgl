@@ -26,5 +26,7 @@ Key Features: /n
 
 
 -UI with LVGL V8.0
+
 -WiFi Weather with Symbols for your city
--Time
+
+-Wifi Date
