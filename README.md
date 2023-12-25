@@ -28,7 +28,7 @@ Key Features: /n
 -Battery 18650 with BMS 1S + TP5100 for charging management for mobility
 
 
--UI with LVGL V8.0
+-GUI with LVGL V8.0 https://lvgl.io/
 
 
 
