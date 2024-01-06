@@ -34,7 +34,7 @@ Key Features: /n
 
 -WiFi Weather based on "openweathermap" with Symbols for your city
 
--Wifi Date
+-Wifi time & date
 
 -C02 history 24h
 
