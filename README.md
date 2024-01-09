@@ -17,7 +17,7 @@ Key Features: /n
 
 -Auto display brightness control with sensor TEMT6000 (ADC)
 
--Distane measuring for control features, like standby mode, with sensor VL53l0X (I2C)
+-Distance measuring for control features, like standby mode, with sensor VL53l0X (I2C)
 
 -LED and Buzzer for notifications (GPIO,PWM/TIM)
 
