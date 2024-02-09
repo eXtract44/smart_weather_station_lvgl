@@ -640,7 +640,7 @@ void draw_weather() {
 		if (read_weather_clouds() < 20) {
 			lv_obj_add_flag(lv_object[IMAGE_CLOUD], LV_OBJ_FLAG_HIDDEN); // off
 			lv_obj_add_flag(lv_object[IMAGE_CLOUD_1], LV_OBJ_FLAG_HIDDEN); // off
-			if (read_time_hour() > 7 && read_time_hour() < 20) {
+			if (read_time_hour() > 8 && read_time_hour() < 18) {
 				lv_obj_clear_flag(lv_object[IMAGE_SUN], LV_OBJ_FLAG_HIDDEN); // on
 			} else {
 				lv_obj_clear_flag(lv_object[IMAGE_MOON], LV_OBJ_FLAG_HIDDEN); // on
@@ -710,6 +710,9 @@ void draw_symbol_battery() {
 		case 5:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_BATTERY], LV_SYMBOL_BATTERY_FULL, 0);
 			break;
+		case default: 
+			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_BATTERY], LV_SYMBOL_BATTERY_EMPTY, 0);
+			break;
 		}
 		status_battery_old = read_battery_status();
 	}
@@ -725,6 +728,9 @@ void draw_symbol_wifi() {
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_WIFI], LV_SYMBOL_WIFI, 0);
 			break;
 		case WIFI_DISCONNECTED:
+			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_WIFI], LV_SYMBOL_WARNING, 0);
+			break;
+			case default:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_WIFI], LV_SYMBOL_WARNING, 0);
 			break;
 		}
@@ -744,8 +750,10 @@ void draw_symbol_volume() {
 		case 3:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_BUZZER], LV_SYMBOL_VOLUME_MAX, 0);
 			break;
+			case default:
+			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_BUZZER], LV_SYMBOL_MUTE, 0);
+			break;
 		}
-
 		read_volume_old = read_volume_dfplayer();
 	}
 	DFPlayer_setVolume(read_potentiometer());
@@ -791,13 +799,16 @@ void draw_symbol_distance() { // update every 300 ms
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_EYE], LV_SYMBOL_EYE_CLOSE, 0);
 			break;
 		case 1:
-			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_EYE], LV_SYMBOL_POWER, 0);
+			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_EYE], LV_SYMBOL_EYE_OPEN, 0);
 			break;
 		case 2:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_EYE], LV_SYMBOL_EYE_OPEN, 0);
 			break;
-			range_old = range_read();
+		case default:
+			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_EYE], LV_SYMBOL_EYE_CLOSE, 0);
+		break;		
 		}
+		range_old = range_read();
 	}
 }
 static void timer_300(lv_timer_t *timer) {
