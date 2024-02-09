@@ -120,12 +120,14 @@ void esp_read() {
 	static int16_t value_temp_esp, median_temp_esp = 0;
 	if (check_valid(ADDRESS_TIME_MIN)) {
 		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_minute], value_temp_esp);
-		time_esp.minute = constrain_values(median_temp_esp, time_esp.minute, 0, 60); /*min 0 max 60 minute*/
+		//median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_minute], value_temp_esp);
+		//time_esp.minute = constrain_values(median_temp_esp, time_esp.minute, 0, 60); /*min 0 max 60 minute*/
+		time_esp.minute = constrain_values(value_temp_esp, time_esp.minute, 0, 60); /*min 0 max 60 minute*/
 	} else if (check_valid(ADDRESS_TIME_HOUR)) {
 		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_hour], value_temp_esp);
-		time_esp.hour = constrain_values(median_temp_esp, time_esp.hour, 0, 24); /*min 0 max 24 hour*/
+		//median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_hour], value_temp_esp);
+		//time_esp.hour = constrain_values(median_temp_esp, time_esp.hour, 0, 24); /*min 0 max 24 hour*/
+		time_esp.hour = constrain_values(value_temp_esp, time_esp.hour, 0, 24); /*min 0 max 24 hour*/
 	} else if (check_valid(ADDRESS_TIME_MDAY)) {
 		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
 		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_mday], value_temp_esp);
