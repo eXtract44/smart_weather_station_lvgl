@@ -710,7 +710,7 @@ void draw_symbol_battery() {
 		case 5:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_BATTERY], LV_SYMBOL_BATTERY_FULL, 0);
 			break;
-		case default: 
+		default:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_BATTERY], LV_SYMBOL_BATTERY_EMPTY, 0);
 			break;
 		}
@@ -730,7 +730,7 @@ void draw_symbol_wifi() {
 		case WIFI_DISCONNECTED:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_WIFI], LV_SYMBOL_WARNING, 0);
 			break;
-			case default:
+			default:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_WIFI], LV_SYMBOL_WARNING, 0);
 			break;
 		}
@@ -750,7 +750,7 @@ void draw_symbol_volume() {
 		case 3:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_BUZZER], LV_SYMBOL_VOLUME_MAX, 0);
 			break;
-			case default:
+			default:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_BUZZER], LV_SYMBOL_MUTE, 0);
 			break;
 		}
@@ -758,37 +758,37 @@ void draw_symbol_volume() {
 	}
 	DFPlayer_setVolume(read_potentiometer());
 }
+#define STANDBY_TIME_DISP_OFF 1000
+#define TIME_DISP_AUTO 10
 void distance_handle() {
 	static uint16_t cnt_activate_0, cnt_activate_1, cnt_bri_update = 0;
-	if (range_read() == 0) { /*standby on*/
+	uint8_t range_now = range_read();
+	if (range_now == 0) { /*standby on, max range activated*/
 		turn_led_off();
 		cnt_activate_0++;
-		if (cnt_activate_0 > 1000) {
+		if (cnt_activate_0 > STANDBY_TIME_DISP_OFF) {
 			ILI9486_SetBrightness(0);
-			cnt_activate_0 = 1001;
-		} else {
+			cnt_activate_0 = STANDBY_TIME_DISP_OFF+1;
+		} else { /*standby off, display brightness auto*/
 			cnt_bri_update++;
-			if (cnt_bri_update > 10) {
+			if (cnt_bri_update > TIME_DISP_AUTO) {
 				ILI9486_SetBrightness_Auto();
 				cnt_bri_update = 0;
 			}
-
 			cnt_activate_1 = 0;
-		}
-	} else if (range_read() == 1) { /*display on,standby off*/
+		}/***********************************************/
+	} else if (range_now == 1  || range_now == 2) { /*display on,standby off*/
 		toggle_led();
 		cnt_activate_1++;
 		if (cnt_activate_1 > 2) {
 			cnt_activate_0 = 0;
 			cnt_activate_1 = 0;
 			//if (cnt_activate_0 > 1000) {
-			DFPlayer_playFolder(2, 12);
+			//DFPlayer_playFolder(2, 12);
 			//ILI9486_SetBrightness_Auto();
 			ILI9486_SetBrightness(100);
 			//}
 		}
-	} else if (range_read() == 2) {
-		toggle_led();
 	}
 }
 void draw_symbol_distance() { // update every 300 ms
@@ -804,7 +804,7 @@ void draw_symbol_distance() { // update every 300 ms
 		case 2:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_EYE], LV_SYMBOL_EYE_OPEN, 0);
 			break;
-		case default:
+		default:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_EYE], LV_SYMBOL_EYE_CLOSE, 0);
 		break;		
 		}

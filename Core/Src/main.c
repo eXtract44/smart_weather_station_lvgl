@@ -147,17 +147,17 @@ int main(void) {
 	MX_USART3_UART_Init();
 	/* USER CODE BEGIN 2 */
 	toggle_led();
-	HAL_Delay(3000);
+	HAL_Delay(300);
 	HAL_UART_Receive_DMA(&huart2, uart_esp_rx_buffer, NUMBER_OF_RX_BYTES_ESP); /*Initialization UART2 peripheral with DMA for ESP32 data*/
 	HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_1); /*Initialization PWM TIM12 CH1 peripheral for Buzzer*/
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4); /*Initialization PWM TIM3 CH4 peripheral for display brightness*/
 	toggle_led();
-	DF_Init(15); //0-30
+	//DF_Init(15); //0-30
 	toggle_led();
-	HAL_Delay(150);
+	HAL_Delay(300);
 	ILI9486_Init();
-	DFPlayer_playFolder_(2, 14);
-	HAL_Delay(1300);
+	//DFPlayer_playFolder_(2, 14);
+	//HAL_Delay(1300);
 	sgp30_init();
 	toggle_led();
 	aht10_init();
@@ -165,7 +165,7 @@ int main(void) {
 	InitVL53();
 	startContinuous(&sensor1, 0); //Second parameter: x ms wait
 	toggle_led();
-	DFPlayer_playFolder_(2, 15);
+	//DFPlayer_playFolder_(2, 15);
 	lv_init();
 	lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, NULL, MY_DISP_HOR_RES * 10); //Initialize the display buffer//10
 	lv_disp_drv_t disp_drv; //Descriptor of a display driver//

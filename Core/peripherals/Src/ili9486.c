@@ -5,28 +5,7 @@
 
 static uint8_t rotationNum = 1;
 
-extern TIM_HandleTypeDef htim3;
-//-------------------------------------------------------------------
-float map_ili(float x, float in_min, float in_max, float out_min, float out_max) {
-	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
-void ILI9486_SetBrightness_Auto()
-{
-	uint16_t temp = (uint16_t)(map_ili(temt6000_read(), 35, 360, 5, 100));
-	ILI9486_SetBrightness(temp);
-}
-void ILI9486_SetBrightness(uint8_t brightness)
-/*
-htim3.Init.Prescaler = 0;
-htim3.Init.Period = 1000;
-//ini PWM Timer in (main.c) HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
-*/
-{
-	if(brightness > 100)brightness=100;
-	if(brightness < 0)brightness=0;
-	 float i = map_ili(brightness, 0, 100, 1000, 0);
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, i);
-}
+
 //-------------------------------------------------------------------
 void ILI9486_SendCommand(uint8_t com) {
 	*(__IO uint8_t*) (0x60000000) = com;

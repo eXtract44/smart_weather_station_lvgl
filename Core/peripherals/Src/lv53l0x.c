@@ -24,11 +24,12 @@ uint16_t vl53_read_cm(){
 	return distance_cm;
 }
 uint8_t range_read() {
-	if (vl53_read_cm() <= STEP_RANGE)
+	uint8_t cm = vl53_read_cm();
+	if (cm <= STEP_RANGE)
 		return 1;
-	else if (vl53_read_cm() > STEP_RANGE && vl53_read_cm() <= STEP_RANGE * 2)
+	else if (cm > STEP_RANGE && cm <= STEP_RANGE * 2)
 		return 2;
-	else if(vl53_read_cm() == MAX_RANGE)
+	else if(cm == MAX_RANGE)
 		return 0;
 }
 
