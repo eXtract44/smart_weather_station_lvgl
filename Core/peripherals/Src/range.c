@@ -4,9 +4,6 @@
 #include "../Inc/brightness_control.h"
 #include <stdint.h>
 
-#define TIME_STANDBY 300*3 // 1 tick == 300 mS
-#define ACTIVATION_DELAY 2*3 // 1 tick == 300 mS
-
 uint16_t cnt_standby = 0;
 
 uint16_t read_standby_time() {
@@ -20,7 +17,7 @@ uint8_t range_read(){
 		return RANGE_0;
 	}
 }
-void range_handler() { //1 tick ~300mS
+void range_handler() { //1 tick ~500mS
 	static uint16_t delay_ = 0;
 	uint16_t current_range = vl53_read_cm();
 	if (current_range < RANGE_STEP) {

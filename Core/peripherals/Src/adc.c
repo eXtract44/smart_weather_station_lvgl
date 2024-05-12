@@ -35,21 +35,21 @@ uint8_t read_battery_status(){
 	else return 0;
 }
 uint16_t read_potentiometer() {/*IN PROC*/
-uint16_t temp = map_adc(adc_data[ADC_POT], 10, 4090, 0, 30);
+/*uint16_t temp = map_adc(adc_data[ADC_POT], 10, 4090, 0, 30);
 	if (temp < 0) {
 		temp = 0;
 	}
 	if (temp > 30) {
 		temp = 30;
-	}
-return temp;
+	}*/
+return 0;
 }
 uint8_t read_volume_dfplayer() {
 	if (read_potentiometer() < 4)
 		return 1;
 	else if (read_potentiometer() > 5 && read_potentiometer() < 15)
 		return 2;
-	else if (read_potentiometer() > 24)
+	else
 		return 3;
 }
 

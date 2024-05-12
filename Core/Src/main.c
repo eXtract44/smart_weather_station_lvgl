@@ -184,6 +184,7 @@ int main(void) {
 	ILI9486_SetBrightness(100);
 	init_filter_esp();
 	turn_led_off();
+	start_buzzer(1000, 70);
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
