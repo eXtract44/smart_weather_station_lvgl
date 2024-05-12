@@ -5,7 +5,7 @@
 
 Project Smart Weather Station: 
 
-Key Features: /n
+Key Features: 
 
 -Based on powerful MCU STM32F446VET6 and ESP8266 WiFi onboard
 
