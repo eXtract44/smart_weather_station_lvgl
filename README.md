@@ -1,7 +1,9 @@
 # smart_weather_station_lvgl
+
 to do
 
 -FIX UART transfer with IT
+
 -add range bar 
 
 
