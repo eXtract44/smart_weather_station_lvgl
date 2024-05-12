@@ -1,0 +1,13 @@
+../Core/lvgl/src/draw/../misc/lv_color.h:613:26:lv_color_make	1
+../Core/lvgl/src/draw/../misc/lv_color.h:689:26:lv_color_black	1
+../Core/lvgl/src/draw/../misc/lv_area.h:120:20:lv_area_copy	1
+../Core/lvgl/src/draw/../misc/lv_area.h:133:26:lv_area_get_width	1
+../Core/lvgl/src/draw/../misc/lv_area.h:143:26:lv_area_get_height	1
+../Core/lvgl/src/draw/lv_draw_arc.c:62:28:lv_draw_arc_dsc_init	1
+../Core/lvgl/src/draw/lv_draw_arc.c:70:6:lv_draw_arc	20
+../Core/lvgl/src/draw/lv_draw_arc.c:221:6:lv_draw_arc_get_area	25
+../Core/lvgl/src/draw/lv_draw_arc.c:319:13:draw_quarter_0	21
+../Core/lvgl/src/draw/lv_draw_arc.c:372:13:draw_quarter_1	21
+../Core/lvgl/src/draw/lv_draw_arc.c:425:13:draw_quarter_2	21
+../Core/lvgl/src/draw/lv_draw_arc.c:478:13:draw_quarter_3	21
+../Core/lvgl/src/draw/lv_draw_arc.c:531:13:get_rounded_area	3

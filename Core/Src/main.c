@@ -152,6 +152,8 @@ int main(void) {
 	HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_1); /*Initialization PWM TIM12 CH1 peripheral for Buzzer*/
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4); /*Initialization PWM TIM3 CH4 peripheral for display brightness*/
 	toggle_led();
+	HAL_Delay(300);
+	ILI9486_Init();
 	//DF_Init(15); //0-30
 	toggle_led();
 	HAL_Delay(300);
@@ -427,7 +429,7 @@ static void MX_TIM3_Init(void) {
 	htim3.Instance = TIM3;
 	htim3.Init.Prescaler = 0;
 	htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-	htim3.Init.Period = 1000;
+	htim3.Init.Period = 65535;
 	htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
 	htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
 	if (HAL_TIM_PWM_Init(&htim3) != HAL_OK) {

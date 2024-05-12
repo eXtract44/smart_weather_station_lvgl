@@ -1,0 +1,10 @@
+../Core/lvgl/src/extra/widgets/calendar/../../../core/lv_obj_style_gen.h:91:26:lv_obj_get_style_pad_top	1
+../Core/lvgl/src/extra/widgets/calendar/../../../core/lv_obj_style_gen.h:97:26:lv_obj_get_style_pad_bottom	1
+../Core/lvgl/src/extra/widgets/calendar/../../../core/lv_obj_style_gen.h:103:26:lv_obj_get_style_pad_left	1
+../Core/lvgl/src/extra/widgets/calendar/../../../core/lv_obj_style_gen.h:109:26:lv_obj_get_style_pad_right	1
+../Core/lvgl/src/extra/widgets/calendar/../../../core/lv_obj_style_gen.h:121:26:lv_obj_get_style_pad_column	1
+../Core/lvgl/src/extra/widgets/calendar/../../../core/lv_obj_style_gen.h:127:26:lv_obj_get_style_radius	1
+../Core/lvgl/src/extra/widgets/calendar/lv_calendar_header_dropdown.c:60:12:lv_calendar_header_dropdown_create	1
+../Core/lvgl/src/extra/widgets/calendar/lv_calendar_header_dropdown.c:73:13:my_constructor	1
+../Core/lvgl/src/extra/widgets/calendar/lv_calendar_header_dropdown.c:111:13:month_event_cb	1
+../Core/lvgl/src/extra/widgets/calendar/lv_calendar_header_dropdown.c:125:13:year_event_cb	1

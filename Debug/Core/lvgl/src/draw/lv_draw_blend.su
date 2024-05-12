@@ -1,0 +1,17 @@
+../Core/lvgl/src/draw/../misc/lv_color.h:461:48:lv_color_mix	24	static
+../Core/lvgl/src/draw/../misc/lv_color.h:490:42:lv_color_premult	16	static
+../Core/lvgl/src/draw/../misc/lv_color.h:515:48:lv_color_mix_premult	24	static
+../Core/lvgl/src/draw/../misc/lv_color.h:613:26:lv_color_make	16	static
+../Core/lvgl/src/draw/../misc/lv_color.h:689:26:lv_color_black	8	static
+../Core/lvgl/src/draw/../misc/lv_area.h:133:26:lv_area_get_width	16	static
+../Core/lvgl/src/draw/../misc/lv_area.h:143:26:lv_area_get_height	16	static
+../Core/lvgl/src/draw/lv_draw_blend.c:128:28:_lv_blend_fill	72	static
+../Core/lvgl/src/draw/lv_draw_blend.c:185:28:_lv_blend_map	88	static
+../Core/lvgl/src/draw/lv_draw_blend.c:238:13:fill_set_px	80	static
+../Core/lvgl/src/draw/lv_draw_blend.c:293:35:fill_normal	120	static
+../Core/lvgl/src/draw/lv_draw_blend.c:503:13:fill_blended	72	static
+../Core/lvgl/src/draw/lv_draw_blend.c:581:13:map_set_px	88	static
+../Core/lvgl/src/draw/lv_draw_blend.c:645:35:map_normal	80	static
+../Core/lvgl/src/draw/lv_draw_blend.c:879:13:map_blended	72	static
+../Core/lvgl/src/draw/lv_draw_blend.c:952:26:color_blend_true_color_additive	24	static
+../Core/lvgl/src/draw/lv_draw_blend.c:1005:26:color_blend_true_color_subtractive	24	static

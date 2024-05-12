@@ -1,0 +1,4 @@
+../Core/peripherals/Src/aht10.c:19:6:aht10_init	16	static
+../Core/peripherals/Src/aht10.c:32:6:aht10_read	24	static
+../Core/peripherals/Src/aht10.c:65:7:read_temperature_aht10	4	static
+../Core/peripherals/Src/aht10.c:68:9:read_humidity_aht10	4	static

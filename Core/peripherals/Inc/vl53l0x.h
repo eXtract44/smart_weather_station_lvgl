@@ -8,6 +8,8 @@
 #include <stdint.h>
 #include <string.h>
 
+
+
 #define ADDRESS_DEFAULT 0b0101001
 
 #define SYSRANGE_START                              0x00
@@ -118,7 +120,7 @@ typedef struct __SequenceStepTimeouts {
 	uint16_t msrc_dss_tcc_mclks, pre_range_mclks, final_range_mclks;
 	uint32_t msrc_dss_tcc_us, pre_range_us, final_range_us;
 } SequenceStepTimeouts;
-
+uint16_t vl53_read_cm();
 void setup_VL53L0X(VL53L0X *lidar);
 void setAddress(VL53L0X *lidar, uint8_t new_addr);
 uint8_t getAddress(VL53L0X *lidar);

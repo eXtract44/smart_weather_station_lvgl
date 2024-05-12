@@ -12,6 +12,8 @@
 
 
 #define _Check 0xFE
+#define TIME_DAY_START 7
+#define TIME_DAY_END 22
 #define ADDRESS_TIME_MIN 0x00
 #define ADDRESS_TIME_HOUR 0x0A
 #define ADDRESS_TIME_MDAY 0x14

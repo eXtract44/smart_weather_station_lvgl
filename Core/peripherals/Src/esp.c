@@ -5,10 +5,10 @@
 
 extern UART_HandleTypeDef huart2;
 uint8_t uart_esp_rx_buffer[NUMBER_OF_RX_BYTES_ESP] = { 0 };
-#define TIME_HOUR_OFFSET 1
+#define TIME_HOUR_OFFSET 0
 
 #define NUM_MEDIAN 12+1
-#define NUM_ELEMENTS_BUFFER 5
+#define NUM_ELEMENTS_BUFFER 3
 
 enum NamesOfMedian {
 	median_hour,

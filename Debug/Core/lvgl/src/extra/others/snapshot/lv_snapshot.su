@@ -1,0 +1,8 @@
+../Core/lvgl/src/extra/others/snapshot/../../../core/../misc/../font/../misc/lv_area.h:120:20:lv_area_copy	16	static
+../Core/lvgl/src/extra/others/snapshot/../../../core/../misc/../font/../misc/lv_area.h:133:26:lv_area_get_width	16	static
+../Core/lvgl/src/extra/others/snapshot/../../../core/../misc/../font/../misc/lv_area.h:143:26:lv_area_get_height	16	static
+../Core/lvgl/src/extra/others/snapshot/../../../core/lv_obj_style.h:92:20:lv_obj_remove_style_all	16	static
+../Core/lvgl/src/extra/others/snapshot/lv_snapshot.c:46:10:lv_snapshot_buf_size_needed	24	static
+../Core/lvgl/src/extra/others/snapshot/lv_snapshot.c:82:10:lv_snapshot_take_to_buf	152	static
+../Core/lvgl/src/extra/others/snapshot/lv_snapshot.c:182:16:lv_snapshot_take	40	static
+../Core/lvgl/src/extra/others/snapshot/lv_snapshot.c:213:6:lv_snapshot_free	16	static
