@@ -2,8 +2,14 @@
 #include "../peripherals/Inc/led.h"
 
 
-#define LED_PIN GPIO_PIN_12
-#define LED_PORT GPIOB
+#define LED_PIN GPIO_PIN_12 //blue
+#define LED_PORT GPIOB      //blue
+
+#define LED_PIN_GREEN GPIO_PIN_8
+#define LED_PORT_GREEN GPIOD
+
+#define LED_PIN_RED GPIO_PIN_5
+#define LED_PORT_RED GPIOC
 
 
 

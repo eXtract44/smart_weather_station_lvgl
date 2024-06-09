@@ -4,7 +4,7 @@
 
 #define RANGE_STEP 12 // in cm
 #define RANGE_MAX RANGE_STEP * 2 + 1 // in cm
-#define TIME_STANDBY 150*2 // 1 tick == 500 mS
+#define TIME_STANDBY 10*2 // 1 tick == 500 mS
 #define ACTIVATION_DELAY 3 // 1 tick == 500 mS
 
 #define RANGE_0 0

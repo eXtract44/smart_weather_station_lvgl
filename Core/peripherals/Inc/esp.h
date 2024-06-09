@@ -96,4 +96,5 @@ int16_t convertBytesToInt16(const uint8_t* bytes);
 void esp_read_weather();
 void esp_read_time();
 void esp_read();
+void init_filter_esp();
 #endif /* INC_ESP_H_ */

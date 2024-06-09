@@ -12,6 +12,9 @@
 
 //extern lv_indev_t *indev_keypad; // for btn group
 static lv_meter_indicator_t *indic_co2;
+const lv_font_t *font[NUMBERS_OF_FONTS];
+static lv_style_t style[NUMBERS_OF_STYLES];
+static lv_obj_t *lv_object[NUMBER_OF_OBJECTS];
 
 char string_buffer[20];
 #define MAX_VALUE_CO2 2400

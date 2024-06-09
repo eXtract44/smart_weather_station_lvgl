@@ -23,5 +23,7 @@ void start_buzzer(uint16_t time, uint16_t volume) {
 	buzzer_delay(time);
 	__HAL_TIM_SET_COMPARE(&TIMER_BUZZER, TIM_CHANNEL_1, 0);
 }
-
+void beep(){
+	start_buzzer(1000, 70);
+}
 

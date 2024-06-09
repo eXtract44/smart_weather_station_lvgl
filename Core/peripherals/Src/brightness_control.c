@@ -15,7 +15,7 @@ extern TIM_HandleTypeDef htim3;
 #define AUTO_BRIGTNESS_MAX 100
 #define BRIGTNESS_MIN 1
 #define BRIGTNESS_MAX 100
-#define LUX_MIN 35
+#define LUX_MIN 20
 #define LUX_MAX 360
 #define BRIGTNESS_MIN_PROC 0
 #define BRIGTNESS_MAX_PROC 100

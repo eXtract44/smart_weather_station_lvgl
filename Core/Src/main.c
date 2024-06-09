@@ -23,6 +23,7 @@
 /* USER CODE BEGIN Includes */
 #include "../peripherals/Inc/ili9486.h"
 #include "../lvgl/lvgl.h"
+#include "../menu/Inc/lvgl_menu.h"
 //#include "../lvgl/examples/lv_examples.h"
 #include "../lvgl/lv_port_indev.h"
 #include "../peripherals/Inc/esp.h"
@@ -103,7 +104,7 @@ static void tft_flush(lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_t
 }
 
 static lv_disp_draw_buf_t draw_buf_dsc_1;
-static lv_color_t buf_1[MY_DISP_HOR_RES * 20]; /*A buffer for 10 rows*/ //10
+static lv_color_t buf_1[MY_DISP_HOR_RES * 10]; /*A buffer for 10 rows*/ //10
 
 /* USER CODE END 0 */
 
@@ -184,7 +185,7 @@ int main(void) {
 	ILI9486_SetBrightness(100);
 	init_filter_esp();
 	turn_led_off();
-	start_buzzer(1000, 70);
+	//beep();
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -581,17 +582,17 @@ static void MX_USART3_UART_Init(void) {
 	/* USER CODE BEGIN USART3_Init 1 */
 
 	/* USER CODE END USART3_Init 1 */
-	huart3.Instance = USART3;
-	huart3.Init.BaudRate = 9600;
-	huart3.Init.WordLength = UART_WORDLENGTH_8B;
-	huart3.Init.StopBits = UART_STOPBITS_1;
-	huart3.Init.Parity = UART_PARITY_NONE;
-	huart3.Init.Mode = UART_MODE_TX_RX;
-	huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-	huart3.Init.OverSampling = UART_OVERSAMPLING_16;
-	if (HAL_UART_Init(&huart3) != HAL_OK) {
-		Error_Handler();
-	}
+//	huart3.Instance = USART3;
+//	huart3.Init.BaudRate = 9600;
+//	huart3.Init.WordLength = UART_WORDLENGTH_8B;
+//	huart3.Init.StopBits = UART_STOPBITS_1;
+//	huart3.Init.Parity = UART_PARITY_NONE;
+//	huart3.Init.Mode = UART_MODE_TX_RX;
+//	huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+//	huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+//	if (HAL_UART_Init(&huart3) != HAL_OK) {
+//		Error_Handler();
+//	}
 	/* USER CODE BEGIN USART3_Init 2 */
 
 	/* USER CODE END USART3_Init 2 */
@@ -699,7 +700,8 @@ static void MX_GPIO_Init(void) {
 	HAL_GPIO_WritePin(LED_STM_GPIO_Port, LED_STM_Pin, GPIO_PIN_RESET);
 
 	/*Configure GPIO pin Output Level */
-	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_6, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_6 | GPIO_PIN_8, GPIO_PIN_RESET);
 
 	/*Configure GPIO pins : CHARGING_Pin CHARGEFULL_Pin */
 	GPIO_InitStruct.Pin = CHARGING_Pin | CHARGEFULL_Pin;

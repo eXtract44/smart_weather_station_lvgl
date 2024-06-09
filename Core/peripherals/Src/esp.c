@@ -117,7 +117,7 @@ void esp_read() {
 	weather_esp.temperature_raw = temp_t;
 
 #else
-	static int16_t value_temp_esp, median_temp_esp = 0;
+	int16_t value_temp_esp, median_temp_esp = 0;
 	if (check_valid(ADDRESS_TIME_MIN)) {
 		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
 		//median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_minute], value_temp_esp);

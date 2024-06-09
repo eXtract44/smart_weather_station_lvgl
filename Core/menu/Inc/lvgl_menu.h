@@ -8,19 +8,19 @@
 #ifndef INC_LVGL_MENU_H_
 #define INC_LVGL_MENU_H_
 #define NUMBERS_OF_FONTS 3+1
-const lv_font_t *font[NUMBERS_OF_FONTS];
+
 enum namesOfFonts {
 	FONT_SMALL, FONT_MEDIUM, FONT_LARGE, FONT_VERY_LARGE,
 };
-lv_group_t *GROUP_BUTTONS;
+//lv_group_t *GROUP_BUTTONS;
 #define NUMBERS_OF_STYLES 3 + 1
-static lv_style_t style[NUMBERS_OF_STYLES];
+
 enum namesOfStyles {
 	STYLE_TEXT_SMALL, STYLE_TEXT_MEDIUM, STYLE_TEXT_LARGE, STYLE_TEXT_VERY_LARGE,
 };
 
 #define NUMBER_OF_OBJECTS 44+1
-static lv_obj_t *lv_object[NUMBER_OF_OBJECTS];
+
 typedef struct {
 	const lv_coord_t x_ofs;
 	const lv_coord_t y_ofs;
