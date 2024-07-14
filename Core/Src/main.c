@@ -184,7 +184,6 @@ int main(void) {
 	ILI9486_SetBrightness(100);
 	init_filter_esp();
 	turn_led_off();
-	HAL_GPIO_WritePin(LED_STM_GPIO_Port, LED_STM_Pin,GPIO_PIN_SET);
 	HAL_Delay(300);
 	//beep();
 	/* USER CODE END 2 */
