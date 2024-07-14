@@ -3,9 +3,10 @@
 #define PERIPHERALS_INC_DISTANCE_H
 
 #define RANGE_STEP 12 // in cm
+#define RANGE_MIN 2 // in cm
 #define RANGE_MAX RANGE_STEP * 2 + 1 // in cm
-#define TIME_STANDBY 10*2 // 1 tick == 500 mS
-#define ACTIVATION_DELAY 3 // 1 tick == 500 mS
+#define TIME_STANDBY 1800*2 // 1 tick == 500 mS
+#define ACTIVATION_DELAY 2*2 // 1 tick == 500 mS
 
 #define RANGE_0 0
 #define RANGE_1 1

@@ -22,7 +22,7 @@ uint16_t vl53_read_cm(){
 }
 void InitVL53(void)
 {
-	//writeReg(&sensor1,I2C_SLAVE_DEVICE_ADDRESS, SOFT_RESET_GO2_SOFT_RESET_N);
+	writeReg(&sensor1,I2C_SLAVE_DEVICE_ADDRESS, SOFT_RESET_GO2_SOFT_RESET_N);
 
   setAddress(&sensor1,0x29);//Default
 

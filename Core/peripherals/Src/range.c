@@ -20,7 +20,7 @@ uint8_t range_read(){
 void range_handler() { //1 tick ~500mS
 	static uint16_t delay_ = 0;
 	uint16_t current_range = vl53_read_cm();
-	if (current_range < RANGE_STEP) {
+	if (current_range < RANGE_STEP && current_range > RANGE_MIN) {
 		toggle_led();
 		delay_++;
 		if (delay_ > ACTIVATION_DELAY) {
@@ -30,6 +30,7 @@ void range_handler() { //1 tick ~500mS
 		}
 	} else {
 		turn_led_off();
+		delay_ = 0;
 		cnt_standby++;
 		if (cnt_standby > TIME_STANDBY) {
 			ILI9486_SetBrightness(0);

@@ -47,8 +47,7 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define	TIM_3_PRESCALLER_ 0
-#define	TIM_3_PERIOD_ 1000
+
 
 /* USER CODE END PM */
 
@@ -166,7 +165,7 @@ int main(void) {
 	aht10_init();
 	toggle_led();
 	InitVL53();
-	startContinuous(&sensor1, 0); //Second parameter: x ms wait
+	startContinuous(&sensor1, 5); //Second parameter: x ms wait
 	toggle_led();
 	//DFPlayer_playFolder_(2, 15);
 	lv_init();
@@ -185,6 +184,8 @@ int main(void) {
 	ILI9486_SetBrightness(100);
 	init_filter_esp();
 	turn_led_off();
+	HAL_GPIO_WritePin(LED_STM_GPIO_Port, LED_STM_Pin,GPIO_PIN_SET);
+	HAL_Delay(300);
 	//beep();
 	/* USER CODE END 2 */
 

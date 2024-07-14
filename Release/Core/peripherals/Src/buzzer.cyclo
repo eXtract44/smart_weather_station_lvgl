@@ -1,0 +1,4 @@
+../Core/peripherals/Src/buzzer.c:9:7:map_buz	1
+../Core/peripherals/Src/buzzer.c:12:6:buzzer_delay	1
+../Core/peripherals/Src/buzzer.c:15:6:start_buzzer	1
+../Core/peripherals/Src/buzzer.c:26:6:beep	1

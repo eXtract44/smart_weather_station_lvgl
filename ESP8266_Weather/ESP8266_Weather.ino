@@ -15,9 +15,9 @@ unsigned long previousMillis = 0;
 extern uint16_t wifi_status;
 
 //wifi
-const char* ssid = "WiFi name";
-const char* password = "wifi password";
-String openWeatherMapApiKey = "your openWeatherMapApiKey";
+const char* ssid = "Freifunk";
+const char* password = "";
+String openWeatherMapApiKey = "467236d17fdfc652af154eb837422f8d";
 //467236d17fdfc652af154eb837422f8d//
 const char* ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = 3600;      //

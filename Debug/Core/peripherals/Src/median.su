@@ -1,2 +1,0 @@
-../Core/peripherals/Src/median.c:13:5:MEDIANFILTER_Init	32	static
-../Core/peripherals/Src/median.c:37:5:MEDIANFILTER_Insert	32	static
