@@ -2,7 +2,7 @@
 
 to do
 
--FIX UART transfer with IT
+-FIX UART transfer baudrate 9600 
 
 ![new](https://github.com/eXtract44/smart_weather_station_lvgl/assets/71541578/53ff4e50-0277-4bec-ab06-445703acdcb9)
 
