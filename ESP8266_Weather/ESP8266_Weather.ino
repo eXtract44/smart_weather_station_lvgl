@@ -6,13 +6,22 @@
 #include "time.h"
 #include <ESP8266HTTPClient.h>
 #include <Arduino_JSON.h>
+#include "data.h"
+
+
+#define debug_time_ 1
+#define debug_weather_ 1
+#define debug_wifi_ 1
+
+espPacket_ espPacket;
+
+#define WIFI_DISCONNECTED 0
+#define WIFI_CONNECTED 1
+#define WIFI_RECONNECT 2
 
 #define UPDATE_TIME 5000         // in mS
-#define DELAY_SEND_FUNKTIONS_WEAT 2  // in mS
-#define DELAY_SEND_FUNKTIONS_TIME 2  // in mS
 
 unsigned long previousMillis = 0;
-extern uint16_t wifi_status;
 
 //wifi
 const char* ssid = "Freifunk";
@@ -25,54 +34,48 @@ const int daylightOffset_sec = 3600;  //
 String city = "Dortmund";
 String countryCode = "DE";
 
-void setup() {
-  delay(2000);
-  Serial.begin(115200);
-  WiFi.mode(WIFI_STA);
+void init_wifi(){
+WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
+  #if debug_wifi_
   Serial.print("WiFi connecting");
+  #endif
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    wifi_status = 5;
+    espPacket.wifiStatus = WIFI_RECONNECT;
+    #if debug_wifi_
     Serial.print(".");
+    Serial.print("wifi connected");
+    #endif
   }
+}
+void setup() {
+  Serial.begin(115200);
+  init_wifi();
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
-
   delay(100);
-  check_wifi();
-  read_wetter();
+  read_wifi();
+  read_weather();
   read_time();
-  send_data_time();
-  send_data_wifi();
-  send_data_weather();
 }
 
 void loop() {
   unsigned long long currentMillis = millis();
-  static uint16_t cnt_debug = 0;
-
   if (currentMillis - previousMillis >= UPDATE_TIME) {  //tick 5 sec
-    previousMillis = currentMillis;
-    if (WiFi.status() == WL_CONNECTED) {
-      read_time();
-      delay(2);
-      read_wetter();
-      cnt_debug++;
-      if (cnt_debug > 6) {
-        delay(2);
-        debug_time();
-        delay(2);
-        debug_weather();
-        cnt_debug = 0;
-      }
-    }
-    check_wifi();
+    previousMillis = currentMillis;        
+    read_weather();
+    read_wifi();
+    read_time();
+    #if debug_time_
+    debug_time();
+    #endif
+     #if debug_weather_
+     debug_weather();
+    #endif
+     #if debug_wifi_
+     debug_wifi();
+    #endif
   }
-
-  send_data_time();
-  delay(5);
-  send_data_wifi();
-  delay(5);
-  send_data_weather();
-  delay(5);
+send_packet();
+delay(10);
 }

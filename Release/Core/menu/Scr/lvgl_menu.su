@@ -3,8 +3,9 @@
 ../Core/menu/Scr/lvgl_menu.c:47:18:create_label	24	static
 ../Core/menu/Scr/lvgl_menu.c:200:13:set_angle	0	static
 ../Core/menu/Scr/lvgl_menu.c:203:13:set_zoom	0	static
+../Core/menu/Scr/lvgl_menu.c:679:6:set_flag.part.0	0	static
 ../Core/menu/Scr/lvgl_menu.c:185:18:create_button_symbol.constprop	24	static
-../Core/menu/Scr/lvgl_menu.c:29:13:create_text.constprop	32	static
+../Core/menu/Scr/lvgl_menu.c:29:13:create_text.constprop	24	static
 ../Core/menu/Scr/lvgl_menu.c:23:7:map_val	0	static
 ../Core/menu/Scr/lvgl_menu.c:26:6:print_value	16	static
 ../Core/menu/Scr/lvgl_menu.c:121:6:print_wday	8	static

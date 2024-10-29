@@ -22,6 +22,6 @@
 ../Core/lvgl/src/extra/widgets/span/lv_span.c:417:12:lv_spangroup_get_max_line_h	24	static
 ../Core/lvgl/src/extra/widgets/span/lv_span.c:439:12:lv_spangroup_get_expand_width	56	static
 ../Core/lvgl/src/extra/widgets/span/lv_span.c:472:12:lv_spangroup_get_expand_height	112	static
-../Core/lvgl/src/extra/widgets/span/lv_span.c:598:13:lv_spangroup_event	224	static
+../Core/lvgl/src/extra/widgets/span/lv_span.c:598:13:lv_spangroup_event	216	static
 ../Core/lvgl/src/extra/widgets/span/lv_span.c:379:6:lv_spangroup_refr_mode	8	static
 ../Core/lvgl/src/extra/widgets/span/lv_span.c:250:6:lv_spangroup_set_mode	0	static

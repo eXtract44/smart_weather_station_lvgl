@@ -3,7 +3,7 @@
 ../Core/lvgl/src/extra/layouts/flex/lv_flex.c:543:13:place_content	8
 ../Core/lvgl/src/extra/layouts/flex/lv_flex.c:583:19:get_next_item	4
 ../Core/lvgl/src/extra/layouts/flex/lv_flex.c:317:16:find_track_end	25
-../Core/lvgl/src/extra/layouts/flex/lv_flex.c:209:13:flex_update	62
+../Core/lvgl/src/extra/layouts/flex/lv_flex.c:209:13:flex_update	60
 ../Core/lvgl/src/extra/layouts/flex/lv_flex.c:92:6:lv_flex_init	1
 ../Core/lvgl/src/extra/layouts/flex/lv_flex.c:124:6:lv_style_set_flex_flow	1
 ../Core/lvgl/src/extra/layouts/flex/lv_flex.c:132:6:lv_style_set_flex_main_place	1

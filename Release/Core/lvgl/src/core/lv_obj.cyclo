@@ -1,4 +1,4 @@
-../Core/lvgl/src/core/lv_obj.c:401:13:lv_obj_constructor	3
+../Core/lvgl/src/core/lv_obj.c:401:13:lv_obj_constructor	2
 ../Core/lvgl/src/core/lv_obj.c:852:13:lv_obj_set_state	25
 ../Core/lvgl/src/core/lv_obj.c:925:13:obj_valid_child.isra	5
 ../Core/lvgl/src/core/lv_obj.c:464:13:lv_obj_draw	27

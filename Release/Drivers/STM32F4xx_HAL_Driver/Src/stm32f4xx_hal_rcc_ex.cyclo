@@ -8,5 +8,5 @@
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c:2990:19:HAL_RCCEx_DisablePLLSAI	3
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c:3051:10:HAL_RCC_GetSysClockFreq	5
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c:3143:19:HAL_RCC_DeInit	13
-../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c:3333:19:HAL_RCC_OscConfig	65
+../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c:3333:19:HAL_RCC_OscConfig	64
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c:3703:6:HAL_RCC_GetOscConfig	3

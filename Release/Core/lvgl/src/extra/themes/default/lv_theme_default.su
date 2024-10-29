@@ -1,7 +1,7 @@
 ../Core/lvgl/src/extra/themes/default/../../../../src/hal/../draw/../misc/lv_color.h:461:48:lv_color_mix	20	static
 ../Core/lvgl/src/extra/themes/default/../../../../src/hal/../draw/../misc/lv_color.h:618:26:lv_color_hex	0	static
 ../Core/lvgl/src/extra/themes/default/../../../../src/hal/../draw/../misc/lv_color.h:685:26:lv_color_white	0	static
-../Core/lvgl/src/extra/themes/default/lv_theme_default.c:619:13:theme_apply	32	static
+../Core/lvgl/src/extra/themes/default/lv_theme_default.c:619:13:theme_apply	24	static
 ../Core/lvgl/src/extra/themes/default/lv_theme_default.c:193:19:grey_filter_cb	16	static
 ../Core/lvgl/src/extra/themes/default/lv_theme_default.c:187:19:dark_color_filter_cb	0	static
 ../Core/lvgl/src/extra/themes/default/../../../../src/core/../misc/lv_style.h:453:20:lv_style_set_size	16	static

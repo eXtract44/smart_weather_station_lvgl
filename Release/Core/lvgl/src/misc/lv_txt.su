@@ -7,10 +7,10 @@
 ../Core/lvgl/src/misc/lv_txt.c:513:17:lv_txt_unicode_to_utf8	8	static
 ../Core/lvgl/src/misc/lv_txt.c:546:17:lv_txt_utf8_conv_wc	0	static
 ../Core/lvgl/src/misc/lv_txt.c:368:6:_lv_txt_is_cmd	0	static
-../Core/lvgl/src/misc/lv_txt.c:278:10:_lv_txt_get_next_line	96	static
+../Core/lvgl/src/misc/lv_txt.c:278:10:_lv_txt_get_next_line	104	static
 ../Core/lvgl/src/misc/lv_txt.c:399:6:_lv_txt_ins	24	static
-../Core/lvgl/src/misc/lv_txt.c:420:6:_lv_txt_cut	32	static
-../Core/lvgl/src/misc/lv_txt.c:436:34:_lv_txt_set_text_vfmt	40	static
+../Core/lvgl/src/misc/lv_txt.c:420:6:_lv_txt_cut	24	static
+../Core/lvgl/src/misc/lv_txt.c:436:34:_lv_txt_set_text_vfmt	32	static
 ../Core/lvgl/src/misc/lv_txt.c:479:6:_lv_txt_encoded_letter_next_2	24	static
 ../Core/lvgl/src/misc/lv_txt.c:329:12:lv_txt_get_width	48	static
 ../Core/lvgl/src/misc/lv_txt.c:91:6:lv_txt_get_size	64	static

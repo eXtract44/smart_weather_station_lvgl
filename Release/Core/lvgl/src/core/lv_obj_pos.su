@@ -36,12 +36,12 @@
 ../Core/lvgl/src/core/lv_obj_pos.c:790:6:lv_obj_invalidate_area	16	static
 ../Core/lvgl/src/core/lv_obj_pos.c:801:6:lv_obj_invalidate	24	static
 ../Core/lvgl/src/core/lv_obj_pos.c:700:6:lv_obj_move_to	48	static
-../Core/lvgl/src/core/lv_obj_pos.c:621:6:lv_obj_refr_pos	72	static
+../Core/lvgl/src/core/lv_obj_pos.c:621:6:lv_obj_refr_pos	64	static
 ../Core/lvgl/src/core/lv_obj_pos.c:860:6:lv_obj_is_visible	24	static
 ../Core/lvgl/src/core/lv_obj_pos.c:876:6:lv_obj_set_ext_click_area	16	static
 ../Core/lvgl/src/core/lv_obj_pos.c:884:6:lv_obj_get_click_area	16	static
 ../Core/lvgl/src/core/lv_obj_pos.c:895:6:lv_obj_hit_test	32	static
-../Core/lvgl/src/core/lv_obj_pos.c:913:12:lv_clamp_width	8	static
+../Core/lvgl/src/core/lv_obj_pos.c:913:12:lv_clamp_width	12	static
 ../Core/lvgl/src/core/lv_obj_pos.c:85:6:lv_obj_refr_size	80	static
 ../Core/lvgl/src/core/lv_obj_pos.c:1047:13:layout_update_core	16	static
 ../Core/lvgl/src/core/lv_obj_pos.c:304:6:lv_obj_update_layout	16	static

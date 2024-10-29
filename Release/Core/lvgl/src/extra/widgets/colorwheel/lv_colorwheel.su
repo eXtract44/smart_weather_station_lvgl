@@ -9,6 +9,6 @@
 ../Core/lvgl/src/extra/widgets/colorwheel/lv_colorwheel.c:151:6:lv_colorwheel_set_mode_fixed	0	static
 ../Core/lvgl/src/extra/widgets/colorwheel/lv_colorwheel.c:169:16:lv_colorwheel_get_hsv	8	static
 ../Core/lvgl/src/extra/widgets/colorwheel/lv_colorwheel.c:182:12:lv_colorwheel_get_rgb	0	static
-../Core/lvgl/src/extra/widgets/colorwheel/lv_colorwheel.c:356:13:lv_colorwheel_event	208	static
+../Core/lvgl/src/extra/widgets/colorwheel/lv_colorwheel.c:356:13:lv_colorwheel_event	200	static
 ../Core/lvgl/src/extra/widgets/colorwheel/lv_colorwheel.c:195:22:lv_colorwheel_get_color_mode	0	static
 ../Core/lvgl/src/extra/widgets/colorwheel/lv_colorwheel.c:208:6:lv_colorwheel_get_color_mode_fixed	0	static

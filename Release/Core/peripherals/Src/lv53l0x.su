@@ -25,7 +25,7 @@
 ../Core/peripherals/Src/lv53l0x.c:918:6:getSequenceStepTimeouts	16	static
 ../Core/peripherals/Src/lv53l0x.c:484:10:getMeasurementTimingBudget	40	static
 ../Core/peripherals/Src/lv53l0x.c:996:10:timeoutMicrosecondsToMclks	0	static
-../Core/peripherals/Src/lv53l0x.c:395:6:setMeasurementTimingBudget	56	static
+../Core/peripherals/Src/lv53l0x.c:395:6:setMeasurementTimingBudget	48	static
 ../Core/peripherals/Src/lv53l0x.c:1025:6:startTimeout	8	static
 ../Core/peripherals/Src/lv53l0x.c:1031:6:checkTimeoutExpired	8	static
 ../Core/peripherals/Src/lv53l0x.c:787:10:readRangeContinuousMillimeters	16	static

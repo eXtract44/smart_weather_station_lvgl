@@ -13,9 +13,9 @@
 ../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:757:15:getModule	8	static
 ../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:780:15:setModuleBounded.constprop	4	static
 ../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:739:5:qrcodegen_getSize	8	static
-../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:603:13:applyMask	64	static
+../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:603:13:applyMask	48	static
 ../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:511:13:drawFormatBits	24	static
-../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:203:6:qrcodegen_encodeSegmentsAdvanced	128	static
+../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:203:6:qrcodegen_encodeSegmentsAdvanced	120	static
 ../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:166:6:qrcodegen_encodeBinary	64	static
 ../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:195:6:qrcodegen_encodeSegments	32	static
 ../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:749:6:qrcodegen_getModule	16	static
@@ -25,5 +25,5 @@
 ../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:863:26:qrcodegen_makeBytes	24	static
 ../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:878:26:qrcodegen_makeNumeric	40	static
 ../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:912:26:qrcodegen_makeAlphanumeric	48	static
-../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:128:6:qrcodegen_encodeText	96	static
+../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:128:6:qrcodegen_encodeText	80	static
 ../Core/lvgl/src/extra/libs/qrcode/qrcodegen.c:946:26:qrcodegen_makeEci	32	static

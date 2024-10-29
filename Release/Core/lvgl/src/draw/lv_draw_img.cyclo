@@ -1,5 +1,5 @@
 ../Core/lvgl/src/draw/lv_draw_img.c:646:13:show_error	1
-../Core/lvgl/src/draw/lv_draw_img.c:341:35:lv_draw_map	40
+../Core/lvgl/src/draw/lv_draw_img.c:341:35:lv_draw_map	41
 ../Core/lvgl/src/draw/lv_draw_img.c:59:6:lv_draw_img_dsc_init	1
 ../Core/lvgl/src/draw/lv_draw_img.c:102:9:lv_img_cf_get_px_size	2
 ../Core/lvgl/src/draw/lv_draw_img.c:147:6:lv_img_cf_is_chroma_keyed	2

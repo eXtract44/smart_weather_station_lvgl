@@ -3,59 +3,67 @@
 #include "../peripherals/Inc/esp.h"
 #include "../peripherals/Inc/median.h"
 
+#include "../ESP8266_Weather/data.h"
+
 extern UART_HandleTypeDef huart2;
+
+espPacket_ espPacket;
+
+uint8_t rxBuffer[sizeof(espPacket)];
+uint8_t dataAvailable = 0;
+
+// UART Callback, um die Daten bei Empfang zu verarbeiten
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+    if (huart->Instance == USART2) {  // Sicherstellen, dass die Daten von USART2 kommen
+        // Struktur aus dem rxBuffer in `receivedData` kopieren
+        memcpy(&espPacket, rxBuffer, sizeof(espPacket_));
+        // Prüfen, ob das Präfix korrekt ist
+        if (strncmp(espPacket.uartKey, "ESP", 3) == 0) {
+        	dataAvailable = 1;
+            // Daten sind gültig; Sie können jetzt auf temperature, humidity und lightLevel zugreifen
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//TODO
+
 uint8_t uart_esp_rx_buffer[NUMBER_OF_RX_BYTES_ESP] = { 0 };
 #define TIME_HOUR_OFFSET 0
-
-#define NUM_MEDIAN 12+1
-#define NUM_ELEMENTS_BUFFER 3
-
-enum NamesOfMedian {
-	median_hour,
-	median_minute,
-	median_month,
-	median_mday,
-	median_wday,
-	median_temperature_raw,
-	median_humidity,
-	median_pressure,
-	median_wind,
-	median_clouds,
-	median_rain,
-	median_snow,
-	median_wifi,
-};
-
-static sMedianFilter_t medianFilter_esp[NUM_MEDIAN];
-static sMedianNode_t medianBuffer_esp[NUM_MEDIAN][NUM_ELEMENTS_BUFFER];
-
-void init_filter_esp() {
-	for (uint8_t i = 0; i < NUM_MEDIAN; i++) {
-		medianFilter_esp[i].numNodes = NUM_ELEMENTS_BUFFER;
-		medianFilter_esp[i].medianBuffer = medianBuffer_esp[i];
-		MEDIANFILTER_Init(&medianFilter_esp[i]);
-	}
-}
 
 //#define SIMULATE_ESP_VALUES
 
 time_t time_esp = { 0 };
 weather_t weather_esp = { 0 };
 
-int16_t convertBytesToInt16(const uint8_t *bytes) {
-	return ((int16_t) bytes[2] << 8) | bytes[1];
-}
 int16_t constrain_values(const int16_t value, int16_t old_value, const int16_t in_min, const int16_t in_max) {
 	if (value >= in_min && value < in_max + 1) {
 		return value;
 	}
 	return old_value;
 }
-bool check_valid(const uint8_t address) {
-	if (uart_esp_rx_buffer[0] == address && uart_esp_rx_buffer[3] == _Check) {
-		return true;
-	}
-	return false;
+bool check_valid() {
+	return dataAvailable;
 }
 
 void esp_read() {

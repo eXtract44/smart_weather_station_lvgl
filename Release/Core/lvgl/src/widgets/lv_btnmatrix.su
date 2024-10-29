@@ -1,9 +1,9 @@
 ../Core/lvgl/src/widgets/lv_btnmatrix.c:375:13:lv_btnmatrix_destructor	8	static
 ../Core/lvgl/src/widgets/../core/lv_obj_style_gen.h:121:26:lv_obj_get_style_pad_column.constprop	8	static
-../Core/lvgl/src/widgets/lv_btnmatrix.c:94:6:lv_btnmatrix_set_map.part.0	112	static
+../Core/lvgl/src/widgets/lv_btnmatrix.c:94:6:lv_btnmatrix_set_map.part.0	120	static
 ../Core/lvgl/src/widgets/lv_btnmatrix.c:357:13:lv_btnmatrix_constructor	0	static
-../Core/lvgl/src/widgets/lv_btnmatrix.c:653:13:draw_main	344	static
-../Core/lvgl/src/widgets/lv_btnmatrix.c:922:17:get_button_from_point	88	static
+../Core/lvgl/src/widgets/lv_btnmatrix.c:653:13:draw_main	336	static
+../Core/lvgl/src/widgets/lv_btnmatrix.c:922:17:get_button_from_point	80	static
 ../Core/lvgl/src/widgets/lv_btnmatrix.c:975:13:invalidate_button_area	40	static
 ../Core/lvgl/src/widgets/lv_btnmatrix.c:82:12:lv_btnmatrix_create	8	static
 ../Core/lvgl/src/widgets/lv_btnmatrix.c:94:6:lv_btnmatrix_set_map	0	static

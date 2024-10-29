@@ -45,5 +45,5 @@
 ../Core/lvgl/src/extra/widgets/chart/lv_chart.c:1747:23:get_tick_gsc	0	static
 ../Core/lvgl/src/extra/widgets/chart/lv_chart.c:1345:13:draw_y_ticks	240	static
 ../Core/lvgl/src/extra/widgets/chart/lv_chart.c:1474:13:draw_x_ticks	232	static
-../Core/lvgl/src/extra/widgets/chart/lv_chart.c:690:13:lv_chart_event	360	static
+../Core/lvgl/src/extra/widgets/chart/lv_chart.c:690:13:lv_chart_event	352	static
 ../Core/lvgl/src/extra/widgets/chart/lv_chart.c:228:6:lv_chart_set_axis_tick	32	static

@@ -1,5 +1,5 @@
 ../Core/lvgl/src/extra/widgets/spinbox/lv_spinbox.c:444:13:lv_spinbox_updatevalue	72	static
-../Core/lvgl/src/extra/widgets/spinbox/lv_spinbox.c:320:13:lv_spinbox_constructor	8	static
+../Core/lvgl/src/extra/widgets/spinbox/lv_spinbox.c:320:13:lv_spinbox_constructor	16	static
 ../Core/lvgl/src/extra/widgets/spinbox/lv_spinbox.c:49:12:lv_spinbox_create	8	static
 ../Core/lvgl/src/extra/widgets/spinbox/lv_spinbox.c:66:6:lv_spinbox_set_value	0	static
 ../Core/lvgl/src/extra/widgets/spinbox/lv_spinbox.c:84:6:lv_spinbox_set_rollover	0	static

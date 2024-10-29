@@ -8,8 +8,8 @@
 ../Core/lvgl/src/widgets/../core/lv_obj_style_gen.h:332:33:lv_obj_get_style_text_font.constprop	8	static
 ../Core/lvgl/src/widgets/../core/lv_obj_style_gen.h:1:26:lv_obj_get_style_width.constprop	8	static
 ../Core/lvgl/src/widgets/lv_label.c:397:10:lv_label_get_letter_on.part.0	104	static
-../Core/lvgl/src/widgets/lv_label.c:891:13:lv_label_refr_text	152	static
-../Core/lvgl/src/widgets/lv_label.c:742:13:lv_label_event	112	static
+../Core/lvgl/src/widgets/lv_label.c:891:13:lv_label_refr_text	144	static
+../Core/lvgl/src/widgets/lv_label.c:742:13:lv_label_event	104	static
 ../Core/lvgl/src/widgets/lv_label.c:73:12:lv_label_create	8	static
 ../Core/lvgl/src/widgets/lv_label.c:85:6:lv_label_set_text	24	static
 ../Core/lvgl/src/widgets/lv_label.c:147:32:lv_label_set_text_fmt	28	static

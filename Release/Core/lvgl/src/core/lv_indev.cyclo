@@ -4,7 +4,7 @@
 ../Core/lvgl/src/core/lv_indev.c:122:6:lv_indev_enable	2
 ../Core/lvgl/src/core/lv_indev.c:129:14:lv_indev_get_act	1
 ../Core/lvgl/src/core/lv_indev.c:134:17:lv_indev_get_type	2
-../Core/lvgl/src/core/lv_indev.c:141:6:lv_indev_reset	17
+../Core/lvgl/src/core/lv_indev.c:141:6:lv_indev_reset	14
 ../Core/lvgl/src/core/lv_indev.c:176:6:lv_indev_reset_long_press	1
 ../Core/lvgl/src/core/lv_indev.c:183:6:lv_indev_set_cursor	2
 ../Core/lvgl/src/core/lv_indev.c:194:6:lv_indev_set_group	3
@@ -19,5 +19,5 @@
 ../Core/lvgl/src/core/lv_indev.c:271:12:lv_indev_get_obj_act	1
 ../Core/lvgl/src/core/lv_indev.c:276:14:lv_indev_get_read_timer	2
 ../Core/lvgl/src/core/lv_indev.c:286:12:lv_indev_search_obj	8
-../Core/lvgl/src/core/lv_indev.c:777:13:indev_proc_press	60
+../Core/lvgl/src/core/lv_indev.c:777:13:indev_proc_press	58
 ../Core/lvgl/src/core/lv_indev.c:64:6:lv_indev_read_timer_cb	121

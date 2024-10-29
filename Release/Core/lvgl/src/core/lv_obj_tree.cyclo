@@ -13,6 +13,6 @@
 ../Core/lvgl/src/core/lv_obj_tree.c:358:13:lv_obj_del_async_cb	1
 ../Core/lvgl/src/core/lv_obj_tree.c:84:6:lv_obj_clean	3
 ../Core/lvgl/src/core/lv_obj_tree.c:131:6:lv_obj_set_parent	7
-../Core/lvgl/src/core/lv_obj_tree.c:202:6:lv_obj_move_to_index	6
+../Core/lvgl/src/core/lv_obj_tree.c:202:6:lv_obj_move_to_index	8
 ../Core/lvgl/src/core/lv_obj_tree.c:233:6:lv_obj_swap	3
 ../Core/lvgl/src/core/lv_obj_tree.c:349:6:lv_obj_tree_walk	1

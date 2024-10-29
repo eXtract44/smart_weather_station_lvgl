@@ -2,11 +2,11 @@
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:311:19:HAL_ADC_Init	16	static
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:677:13:HAL_ADC_MspDeInit	0	static
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:405:19:HAL_ADC_DeInit	16	static
-../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:716:19:HAL_ADC_Start	16	static
+../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:716:19:HAL_ADC_Start	8	static
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:839:19:HAL_ADC_Stop	0	static
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:882:19:HAL_ADC_PollForConversion	16	static
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:971:19:HAL_ADC_PollForEvent	24	static
-../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:1037:19:HAL_ADC_Start_IT	16	static
+../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:1037:19:HAL_ADC_Start_IT	8	static
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:1162:19:HAL_ADC_Stop_IT	0	static
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:1364:19:HAL_ADC_Start_DMA	24	static
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c:1512:19:HAL_ADC_Stop_DMA	8	static

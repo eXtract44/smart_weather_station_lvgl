@@ -3,6 +3,7 @@
 ../Core/menu/Scr/lvgl_menu.c:47:18:create_label	1
 ../Core/menu/Scr/lvgl_menu.c:200:13:set_angle	1
 ../Core/menu/Scr/lvgl_menu.c:203:13:set_zoom	1
+../Core/menu/Scr/lvgl_menu.c:679:6:set_flag.part.0	1
 ../Core/menu/Scr/lvgl_menu.c:185:18:create_button_symbol.constprop	1
 ../Core/menu/Scr/lvgl_menu.c:29:13:create_text.constprop	1
 ../Core/menu/Scr/lvgl_menu.c:23:7:map_val	1

@@ -4,7 +4,7 @@
 ../Core/lvgl/src/core/lv_obj_style.c:661:13:trans_del.isra	12
 ../Core/lvgl/src/core/lv_obj_style.c:71:6:_lv_obj_style_init	1
 ../Core/lvgl/src/core/lv_obj_style.c:205:6:lv_obj_enable_style_refresh	1
-../Core/lvgl/src/core/lv_obj_style.c:210:18:lv_obj_get_style_prop	30
+../Core/lvgl/src/core/lv_obj_style.c:210:18:lv_obj_get_style_prop	32
 ../Core/lvgl/src/core/lv_obj_style.c:756:13:trans_anim_start_cb	1
 ../Core/lvgl/src/core/lv_obj_style.c:167:6:lv_obj_refresh_style	18
 ../Core/lvgl/src/core/lv_obj_style.c:76:6:lv_obj_add_style	3

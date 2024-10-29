@@ -4,7 +4,7 @@
 ../Core/lvgl/src/misc/lv_fs.c:137:13:lv_fs_write	32	static
 ../Core/lvgl/src/misc/lv_fs.c:156:13:lv_fs_seek	8	static
 ../Core/lvgl/src/misc/lv_fs.c:171:13:lv_fs_tell	4	static
-../Core/lvgl/src/misc/lv_fs.c:222:13:lv_fs_dir_read	4	static
+../Core/lvgl/src/misc/lv_fs.c:222:13:lv_fs_dir_read	0	static
 ../Core/lvgl/src/misc/lv_fs.c:239:13:lv_fs_dir_close	8	static
 ../Core/lvgl/src/misc/lv_fs.c:257:6:lv_fs_drv_init	0	static
 ../Core/lvgl/src/misc/lv_fs.c:262:6:lv_fs_drv_register	8	static

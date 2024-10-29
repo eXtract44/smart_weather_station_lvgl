@@ -1,7 +1,7 @@
 ../Core/lvgl/src/extra/widgets/led/../../../../src/hal/../draw/../misc/lv_color.h:397:24:lv_color_to32	8	static
 ../Core/lvgl/src/extra/widgets/led/../../../../src/hal/../draw/../misc/lv_color.h:461:48:lv_color_mix	20	static
 ../Core/lvgl/src/extra/widgets/led/../../../../src/hal/../draw/../misc/lv_color.h:689:26:lv_color_black	0	static
-../Core/lvgl/src/extra/widgets/led/lv_led.c:158:13:lv_led_event	160	static
+../Core/lvgl/src/extra/widgets/led/lv_led.c:158:13:lv_led_event	152	static
 ../Core/lvgl/src/extra/widgets/led/lv_led.c:150:13:lv_led_constructor	8	static
 ../Core/lvgl/src/extra/widgets/led/lv_led.c:54:12:lv_led_create	8	static
 ../Core/lvgl/src/extra/widgets/led/lv_led.c:71:6:lv_led_set_color	0	static
