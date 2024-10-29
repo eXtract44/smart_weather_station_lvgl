@@ -1,0 +1,16 @@
+../Core/peripherals/Src/dfplayer_mini.c:48:6:Send_cmd	1
+../Core/peripherals/Src/dfplayer_mini.c:61:6:DF_Standby	1
+../Core/peripherals/Src/dfplayer_mini.c:65:6:DF_PlayFromStart	1
+../Core/peripherals/Src/dfplayer_mini.c:70:6:DF_PlayStartSound	1
+../Core/peripherals/Src/dfplayer_mini.c:75:6:DF_Init	1
+../Core/peripherals/Src/dfplayer_mini.c:83:6:DF_Next	1
+../Core/peripherals/Src/dfplayer_mini.c:87:6:DF_Pause	1
+../Core/peripherals/Src/dfplayer_mini.c:91:6:DF_Previous	1
+../Core/peripherals/Src/dfplayer_mini.c:95:6:DF_Playback	1
+../Core/peripherals/Src/dfplayer_mini.c:116:6:DFPlayer_playFolder	1
+../Core/peripherals/Src/dfplayer_mini.c:113:6:DFPlayer_playFolder_	1
+../Core/peripherals/Src/dfplayer_mini.c:122:6:say_time_now	12
+../Core/peripherals/Src/dfplayer_mini.c:171:6:DFPlayer_setVolume	1
+../Core/peripherals/Src/dfplayer_mini.c:177:6:DFPlayer_volumeUp	1
+../Core/peripherals/Src/dfplayer_mini.c:190:6:DFPlayer_volumeDown	1
+../Core/peripherals/Src/dfplayer_mini.c:194:6:DFPlayer_reset	1

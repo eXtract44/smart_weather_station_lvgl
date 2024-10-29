@@ -1,0 +1,6 @@
+../Core/peripherals/Src/adc.c:7:7:map_adc	1
+../Core/peripherals/Src/adc.c:11:7:temt6000_read	1
+../Core/peripherals/Src/adc.c:18:10:read_battery	1
+../Core/peripherals/Src/adc.c:28:9:read_battery_status	5
+../Core/peripherals/Src/adc.c:37:10:read_potentiometer	1
+../Core/peripherals/Src/adc.c:47:9:read_volume_dfplayer	1

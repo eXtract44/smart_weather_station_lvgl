@@ -1,3 +1,0 @@
-../Core/peripherals/Src/led.c:10:6:turn_led_on	8	static
-../Core/peripherals/Src/led.c:13:6:turn_led_off	8	static
-../Core/peripherals/Src/led.c:16:6:toggle_led	8	static

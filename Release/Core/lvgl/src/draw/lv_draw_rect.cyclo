@@ -1,0 +1,5 @@
+../Core/lvgl/src/draw/lv_draw_rect.c:409:48:grad_get	3
+../Core/lvgl/src/draw/lv_draw_rect.c:963:35:shadow_blur_corner	15
+../Core/lvgl/src/draw/lv_draw_rect.c:77:28:lv_draw_rect_dsc_init	1
+../Core/lvgl/src/draw/lv_draw_rect.c:1078:6:draw_border_generic	48
+../Core/lvgl/src/draw/lv_draw_rect.c:101:6:lv_draw_rect	134

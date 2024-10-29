@@ -1,0 +1,3 @@
+../Core/peripherals/Src/range.c:9:10:read_standby_time	1
+../Core/peripherals/Src/range.c:12:9:range_read	1
+../Core/peripherals/Src/range.c:20:6:range_handler	4

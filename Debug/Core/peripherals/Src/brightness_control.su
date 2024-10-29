@@ -1,3 +1,0 @@
-../Core/peripherals/Src/brightness_control.c:23:10:map_bri	24	static
-../Core/peripherals/Src/brightness_control.c:26:6:ILI9486_SetBrightness	32	static
-../Core/peripherals/Src/brightness_control.c:40:6:ILI9486_SetBrightness_Auto	16	static
