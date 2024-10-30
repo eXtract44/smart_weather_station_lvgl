@@ -1,4 +1,11 @@
-  typedef struct espPacket_ {
+#ifndef DATA_H_
+#define DATA_H_
+
+#define WIFI_DISCONNECTED 0
+#define WIFI_CONNECTED 1
+#define WIFI_RECONNECT 2
+
+typedef struct espPacket_ {
   char uartKey[3];
   int  tm_sec;
   int tm_min;
@@ -8,6 +15,10 @@
   int tm_wday;
   int tm_year;
   int tm_user_offset_sec;
+  int tm_user_day_start_hour;
+  int tm_user_day_end_hour;
+  int user_current_menu;
+  int user_thema;
   char wifiSSID[40];
   int wifiStatus;
   int wifiSignal;
@@ -44,3 +55,5 @@
   unsigned long id;
   /*String name;*/
 }espPacket_;
+
+#endif /* DATA_H_ */

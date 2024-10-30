@@ -1,7 +1,7 @@
-#include "../smart_weather_station_lvgl/Core/peripherals/Inc/ili9486.h"
+#include "../Core/peripherals/Inc/ili9486.h"
 
-#include "../smart_weather_station_lvgl/Core/lvgl/lvgl.h"
-#include "../smart_weather_station_lvgl/Core/peripherals/Inc/adc.h"
+#include "../Core/lvgl/lvgl.h"
+#include "../Core/peripherals/Inc/adc.h"
 
 
 static uint8_t rotationNum = 1;

@@ -1,0 +1,4 @@
+../Core/lvgl/src/draw/lv_draw_label.c:840:16:hex_char_to_num	4
+../Core/lvgl/src/draw/lv_draw_label.c:98:28:lv_draw_label_dsc_init	1
+../Core/lvgl/src/draw/lv_draw_label.c:411:28:lv_draw_letter	34
+../Core/lvgl/src/draw/lv_draw_label.c:120:28:lv_draw_label	43

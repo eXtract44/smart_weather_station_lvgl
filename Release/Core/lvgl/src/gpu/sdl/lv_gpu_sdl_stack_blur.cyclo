@@ -1,0 +1,2 @@
+../Core/lvgl/src/gpu/sdl/lv_gpu_sdl_stack_blur.c:90:13:stack_blur_job.part.0.constprop	16
+../Core/lvgl/src/gpu/sdl/lv_gpu_sdl_stack_blur.c:80:6:lv_stack_blur_grayscale	2

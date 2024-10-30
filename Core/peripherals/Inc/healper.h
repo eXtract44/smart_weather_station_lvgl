@@ -1,7 +1,8 @@
 #ifndef INC_HEALPER_H_
 #define INC_HEALPER_H_
 
-
+#include "stdint.h"
+#include <stdbool.h>
 
 
 #define constrain(input, min, max) \
@@ -13,6 +14,7 @@
     })
 
 
-
+#define map(in, in_min, in_max, out_min, out_max) \
+    (((in) - (in_min)) * ((out_max) - (out_min)) / ((in_max) - (in_min)) + (out_min))
 
 #endif /* INC_HEALPER_H_ */

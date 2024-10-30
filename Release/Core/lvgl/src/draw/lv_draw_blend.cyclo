@@ -1,0 +1,5 @@
+../Core/lvgl/src/draw/../misc/lv_color.h:461:48:lv_color_mix	1
+../Core/lvgl/src/draw/lv_draw_blend.c:952:26:color_blend_true_color_additive	3
+../Core/lvgl/src/draw/lv_draw_blend.c:1005:26:color_blend_true_color_subtractive	3
+../Core/lvgl/src/draw/lv_draw_blend.c:128:28:_lv_blend_fill	57
+../Core/lvgl/src/draw/lv_draw_blend.c:185:28:_lv_blend_map	54

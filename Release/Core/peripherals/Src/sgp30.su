@@ -1,0 +1,5 @@
+../Core/peripherals/Src/sgp30.c:41:16:CheckCrc8.constprop	0	static
+../Core/peripherals/Src/sgp30.c:19:5:sgp30_init	24	static
+../Core/peripherals/Src/sgp30.c:70:5:sgp30_read	32	static
+../Core/peripherals/Src/sgp30.c:116:10:read_co2_sgp30	0	static
+../Core/peripherals/Src/sgp30.c:119:10:read_tvoc_sgp30	0	static

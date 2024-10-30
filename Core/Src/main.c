@@ -17,19 +17,18 @@
  */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/Inc/main.h"
-
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/lvgl/lv_port_indev.h"
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/lvgl/lvgl.h"
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/menu/Inc/lvgl_menu.h"
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/adc.h"
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/aht10.h"
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/dfplayer_mini.h"
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/esp.h"
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/ili9486.h"
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/led.h"
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/sgp30.h"
-#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/vl53l0x.h"
+#include "../Core/Inc/main.h"
+#include "../Core/lvgl/lv_port_indev.h"
+#include "../Core/lvgl/lvgl.h"
+#include "../Core/menu/Inc/lvgl_menu.h"
+#include "../Core/peripherals/Inc/adc.h"
+#include "../Core/peripherals/Inc/aht10.h"
+#include "../Core/peripherals/Inc/dfplayer_mini.h"
+#include "../Core/peripherals/Inc/esp.h"
+#include "../Core/peripherals/Inc/ili9486.h"
+#include "../Core/peripherals/Inc/led.h"
+#include "../Core/peripherals/Inc/sgp30.h"
+#include "../Core/peripherals/Inc/vl53l0x.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -69,8 +68,9 @@ SRAM_HandleTypeDef hsram1;
 /* USER CODE BEGIN PV */
 VL53L0X sensor1; //Struct in "VL53L0X.h"
 extern volatile uint16_t adc_data[];
-extern uint8_t rxBuffer[sizeof(espPacket)];
 extern espPacket_ espPacket;
+extern uint8_t rxBuffer[sizeof(espPacket)];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -180,7 +180,6 @@ int main(void) {
 	init_lv_objects();
 	toggle_led();
 	ILI9486_SetBrightness(100);
-	init_filter_esp();
 	turn_led_off();
 	HAL_Delay(300);
 	//beep();

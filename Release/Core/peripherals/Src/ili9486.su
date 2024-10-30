@@ -1,0 +1,8 @@
+../Core/peripherals/Src/ili9486.c:11:6:ILI9486_SendCommand	0	static
+../Core/peripherals/Src/ili9486.c:15:6:ILI9486_SendData	0	static
+../Core/peripherals/Src/ili9486.c:19:6:ILI9486_SetCursorPosition	16	static
+../Core/peripherals/Src/ili9486.c:35:6:pushColors	8	static
+../Core/peripherals/Src/ili9486.c:171:6:ILI9486_drawPixel	8	static
+../Core/peripherals/Src/ili9486.c:178:6:ILI9486_setRotation	8	static
+../Core/peripherals/Src/ili9486.c:209:6:ILI9486_fill	8	static
+../Core/peripherals/Src/ili9486.c:55:6:ILI9486_Init	40	static

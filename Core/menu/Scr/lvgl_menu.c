@@ -1,13 +1,3 @@
-#include "stm32f4xx_hal.h"
-#include "../lvgl/lvgl.h"
-#include "../lvgl/lv_port_indev.h"
-#include "../peripherals/Inc/aht10.h"
-#include "../peripherals/Inc/sgp30.h"
-#include "../peripherals/Inc/esp.h"
-#include "../peripherals/Inc/adc.h"
-#include "../peripherals/Inc/range.h"
-#include "../peripherals/Inc/dfplayer_mini.h"
-#include "../peripherals/Inc/ili9486.h"
 #include "../menu/Inc/lvgl_menu.h"
 
 //extern lv_indev_t *indev_keypad; // for btn group
@@ -20,9 +10,6 @@ char string_buffer[20];
 #define MAX_VALUE_CO2 2400
 #define MIN_VALUE_CO2 400
 
-float map_val(float x, float in_min, float in_max, float out_min, float out_max) {
-	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
 void print_value(const char *flags, float value, lv_obj_t *value_lv) {
 	lv_label_set_text_fmt(value_lv, flags, value);
 }
@@ -119,7 +106,7 @@ static lv_obj_t* create_chart(lv_obj_t *screen, lv_coord_t w, lv_coord_t h,
 	return chart;
 }
 void print_wday(uint8_t wday) {
-	if (read_wifi() == WIFI_CONNECTED) {
+	if (get_wifi() == WIFI_CONNECTED) {
 		switch (wday) {
 		case 1:
 			lv_label_set_text(lv_object[TIME_WDAY], "mo");
@@ -149,7 +136,7 @@ void print_wday(uint8_t wday) {
 
 }
 void print_time(uint8_t val1, uint8_t val2) {
-	if (read_wifi() == WIFI_CONNECTED) {
+	if (get_wifi() == WIFI_CONNECTED) {
 		if (val1 < 10 && val2 < 10) {
 				sprintf(string_buffer, "0%d:0%d", (int) val1, (int) val2);
 			} else if (val1 > 9 && val2 < 10) {
@@ -165,7 +152,7 @@ void print_time(uint8_t val1, uint8_t val2) {
 	lv_label_set_text(lv_object[TIME_HOUR_MINUTE], string_buffer);
 }
 void print_mday(uint8_t val1, uint8_t val2) {
-	if (read_wifi() == WIFI_CONNECTED) {
+	if (get_wifi() == WIFI_CONNECTED) {
 		if (val1 < 10 && val2 < 10) {
 				sprintf(string_buffer, "0%d.0%d", (int) val1, (int) val2);
 			} else if (val1 > 9 && val2 < 10) {
@@ -221,7 +208,7 @@ static lv_obj_t* create_anim_image_snow_zoom(lv_obj_t *bg,
 	const uint16_t anim_zoom_min_proc = 256;
 	const uint16_t anim_zoom_max_proc = 512;
 
-	uint16_t temp = map_val(zoom_size, 0, 100, anim_zoom_min_proc,
+	uint16_t temp = map(zoom_size, 0, 100, anim_zoom_min_proc,
 			anim_zoom_max_proc);
 	if (temp < 256)
 		temp = 256;
@@ -255,7 +242,7 @@ static lv_obj_t* create_anim_image_rain_zoom(lv_obj_t *bg,
 	const uint16_t anim_zoom_min_proc = 256;
 	const uint16_t anim_zoom_max_proc = 512;
 
-	uint16_t temp = map_val(zoom_size, 0, 100, anim_zoom_min_proc,
+	uint16_t temp = map(zoom_size, 0, 100, anim_zoom_min_proc,
 			anim_zoom_max_proc);
 	if (temp < 256)
 		temp = 256;
@@ -289,7 +276,7 @@ static lv_obj_t* create_anim_image_cloud_zoom(lv_obj_t *bg,
 	const uint16_t anim_zoom_min_proc = 256;
 	const uint16_t anim_zoom_max_proc = 512;
 
-	uint16_t temp = map_val(zoom_size, 0, 100, anim_zoom_min_proc,
+	uint16_t temp = map(zoom_size, 0, 100, anim_zoom_min_proc,
 			anim_zoom_max_proc);
 	if (temp < 256)
 		temp = 256;
@@ -323,7 +310,7 @@ static lv_obj_t* create_anim_image_wind_zoom(lv_obj_t *bg,
 	const uint16_t anim_zoom_min_proc = 256;
 	const uint16_t anim_zoom_max_proc = 512;
 
-	uint16_t temp = map_val(zoom_size, 0, 100, anim_zoom_min_proc,
+	uint16_t temp = map(zoom_size, 0, 100, anim_zoom_min_proc,
 			anim_zoom_max_proc);
 	if (temp < 256)
 		temp = 256;
@@ -687,8 +674,8 @@ void set_flag(lv_obj_t *obj, bool f) {
 	}
 }
 void draw_weather_sun_moon() {
-	if (read_wifi() == WIFI_CONNECTED) {
-		if (read_time_hour() > TIME_DAY_START && read_time_hour() < TIME_DAY_END) {
+	if (get_wifi() == WIFI_CONNECTED) {
+		if (get_time_hour() > get_start_day() && get_time_hour() < get_end_day()) {
 				set_flag(lv_object[IMAGE_SUN], true);
 				set_flag(lv_object[IMAGE_MOON], false);
 			} else {
@@ -702,7 +689,7 @@ void draw_weather_sun_moon() {
 
 }
 void draw_weather_clouds() {
-	uint8_t current_clouds = read_weather_clouds();
+	uint8_t current_clouds = get_weather_clouds();
 	if (current_clouds < 50) {
 		set_flag(lv_object[IMAGE_CLOUD], false);
 		set_flag(lv_object[IMAGE_CLOUD_1], false);
@@ -712,7 +699,7 @@ void draw_weather_clouds() {
 	}
 }
 void draw_weather_wind() {
-	uint8_t current_wind = read_weather_wind();
+	uint8_t current_wind = get_weather_wind();
 	if (current_wind < 5) {
 		set_flag(lv_object[IMAGE_WIND], false);
 	} else {
@@ -720,7 +707,7 @@ void draw_weather_wind() {
 	}
 }
 void draw_weather_rain() {
-	uint8_t current_rain = read_weather_rain();
+	uint8_t current_rain = get_weather_rain();
 	if (current_rain > 1) {
 		set_flag(lv_object[IMAGE_RAIN], true);
 		set_flag(lv_object[IMAGE_RAIN_1], true);
@@ -730,7 +717,7 @@ void draw_weather_rain() {
 	}
 }
 void draw_weather_snow() {
-	uint8_t current_snow = read_weather_snow();
+	uint8_t current_snow = get_weather_snow();
 	if (current_snow > 1) {
 		set_flag(lv_object[IMAGE_SNOW], true);
 		set_flag(lv_object[IMAGE_SNOW_1], true);
@@ -780,9 +767,9 @@ void draw_symbol_battery() {
 }
 void draw_symbol_wifi() {
 	static uint8_t status_wifi_old = 254;
-	if (read_wifi() != status_wifi_old) {
-		switch (read_wifi()) {
-		case WIFI_CONNECTING:
+	if (get_wifi() != status_wifi_old) {
+		switch (get_wifi()) {
+		case WIFI_RECONNECT:
 			lv_obj_set_style_bg_img_src(lv_object[SYMBOL_WIFI],
 			LV_SYMBOL_REFRESH, 0);
 			break;
@@ -799,7 +786,7 @@ void draw_symbol_wifi() {
 			LV_SYMBOL_WARNING, 0);
 			break;
 		}
-		status_wifi_old = read_wifi();
+		status_wifi_old = get_wifi();
 	}
 }
 void draw_symbol_volume() {
@@ -850,7 +837,7 @@ static void timer_500(lv_timer_t *timer) {
 }
 static void timer_50(lv_timer_t *timer) {
 	LV_UNUSED(timer);
-	esp_read();
+	//esp_read();
 }
 void update_block_top_left() {
 	aht10_read();
@@ -871,19 +858,19 @@ void update_block_top_right() {
 	static uint8_t cnt_time_delay = 10;
 	cnt_time_delay--;
 	if (cnt_time_delay == 0) {
-		print_time(read_time_hour(), read_time_minute());
-		print_mday(read_time_mday(), read_time_month());
-		print_wday(read_time_wday());
+		print_time(get_time_hour(), get_time_minute());
+		print_mday(get_time_mday(), get_time_month());
+		print_wday(get_time_wday());
 		cnt_time_delay = 1;
 	}
 }
 void update_block_bot_left() {
-	print_value("%.1f", read_weather_temperature(),
+	print_value("%.1f", get_weather_temperature(),
 			lv_object[VALUE_TEMPERATURE_OUTSIDE]);
-	print_value("%.f %%", read_weather_humidity(),
+	print_value("%.f %%", get_weather_humidity(),
 			lv_object[VALUE_HUMIDITY_OUTSIDE]);
-	print_value("%.1f m/s", read_weather_wind(), lv_object[VALUE_WIND_OUTSIDE]);
-	print_value("%.f hPa", read_weather_press(),
+	print_value("%.1f m/s", get_weather_wind(), lv_object[VALUE_WIND_OUTSIDE]);
+	print_value("%.f hPa", get_weather_press(),
 			lv_object[VALUE_PRESS_OUTSIDE]);
 }
 void update_block_bot_middle() {

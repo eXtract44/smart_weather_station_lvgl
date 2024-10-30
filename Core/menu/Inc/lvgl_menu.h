@@ -7,6 +7,18 @@
 
 #ifndef INC_LVGL_MENU_H_
 #define INC_LVGL_MENU_H_
+
+#include "stm32f4xx_hal.h"
+#include "../lvgl/lvgl.h"
+#include "../lvgl/lv_port_indev.h"
+#include "../peripherals/Inc/aht10.h"
+#include "../peripherals/Inc/sgp30.h"
+#include "../peripherals/Inc/esp.h"
+#include "../peripherals/Inc/adc.h"
+#include "../peripherals/Inc/range.h"
+#include "../peripherals/Inc/dfplayer_mini.h"
+#include "../peripherals/Inc/ili9486.h"
+
 #define NUMBERS_OF_FONTS 3+1
 
 enum namesOfFonts {

@@ -1,11 +1,4 @@
-#include "../smart_weather_station_lvgl/Core/peripherals/Inc/esp.h"
-
-#include <stdbool.h>
-#include "stm32f4xx_hal.h"
-#include <../ESP8266_Weather/data.h>
-
-#include "../smart_weather_station_lvgl/Core/peripherals/Inc/median.h"
-#include "../smart_weather_station_lvgl/ESP8266_Weather/data.h"
+#include "../Core/peripherals/Inc/esp.h"
 
 extern UART_HandleTypeDef huart2;
 
@@ -16,7 +9,7 @@ uint8_t dataCorrect = 0;
 
 // UART Callback, um die Daten bei Empfang zu verarbeiten
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-	if (huart->Instance == USART2) {  // Sicherstellen, dass die Daten von USART2 kommen
+	if (huart->Instance == USART2) { // Sicherstellen, dass die Daten von USART2 kommen
 		// Struktur aus dem rxBuffer in `receivedData` kopieren
 		memcpy(&espPacket, rxBuffer, sizeof(espPacket_));
 		// Prüfen, ob das Präfix korrekt ist
@@ -26,8 +19,24 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 		}
 	}
 }
+uint8_t get_time_second() {
+	static uint8_t ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.tm_min;
+	}
+	ret = constrain(ret, 0, 59);
+	return ret;
+}
+uint8_t get_time_minute() {
+	static uint8_t ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.tm_min;
+	}
+	ret = constrain(ret, 0, 59);
+	return ret;
+}
 
-uint8_t read_time_hour() {
+uint8_t get_time_hour() {
 	static uint8_t ret = 0;
 	if (dataCorrect) {
 		ret = espPacket.tm_hour - espPacket.tm_user_offset_sec / 3600;
@@ -35,78 +44,113 @@ uint8_t read_time_hour() {
 	ret = constrain(ret, 0, 23);
 	return ret;
 }
-uint8_t read_time_minute() {
+
+uint8_t get_time_mday() {
 	static uint8_t ret = 0;
-		if (dataCorrect) {
-			ret = espPacket
-		}
-		ret = constrain(ret, 0, 23);
-		return ret;
-
-
-	return time_esp.minute;
+	if (dataCorrect) {
+		ret = espPacket.tm_mday;
+	}
+	ret = constrain(ret, 1, 31);
+	return ret;
 }
-uint8_t read_time_mday() {
-	return time_esp.mday;
+uint8_t get_time_month() {
+	static uint8_t ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.tm_mon;
+	}
+	ret = constrain(ret, 1, 12);
+	return ret;
 }
-uint8_t read_time_month() {
-	return time_esp.month;
-}
-uint8_t read_time_wday() {
-	return time_esp.wday;
-}
-float map_esp(float x, float in_min, float in_max, float out_min, float out_max) {
-	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
-float read_weather_temperature() {
-	float temp_w;
-	temp_w = (float) weather_esp.temperature_raw;
-	temp_w = temp_w / 10.0f;
-	return temp_w;
+uint8_t get_time_wday() {
+	static uint8_t ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.tm_wday;
+	}
+	ret = constrain(ret, 1, 7);
+	return ret;
 }
 
-uint8_t read_weather_humidity() {
-	uint8_t temp = weather_esp.humidity;
-	return temp;
+uint8_t get_start_day() {
+	static uint8_t ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.tm_user_day_start_hour;
+	}
+	ret = constrain(ret, 0, 23);
+	return ret;
 }
-uint8_t read_weather_wind() {
-	//uint8_t temp = map_esp(weather_esp.wind, WEATHER_WIND_MIN, WEATHER_WIND_MAX, 1, 100);
-	uint8_t temp = weather_esp.wind;
-	if (temp < 0)
-		temp = 0;
-	if (temp > 60)
-		temp = 60;
-	return temp;
+uint8_t get_end_day() {
+	static uint8_t ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.tm_user_day_end_hour;
+	}
+	ret = constrain(ret, 0, 23);
+	return ret;
 }
-uint8_t read_weather_clouds() {
-	uint8_t temp = map_esp(weather_esp.clouds, WEATHER_CLOUD_MIN, WEATHER_CLOUD_MAX, 1, 100);
-	if (temp < 1)
-		temp = 1;
-	if (temp > 100)
-		temp = 100;
-	return temp;
+
+float get_weather_temperature() {
+	static float ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.main_temp;
+	}
+	ret = constrain(ret, -20, 60);
+	return ret;
 }
-uint8_t read_weather_rain() {
-	uint8_t temp = map_esp(weather_esp.rain, WEATHER_RAIN_MIN, WEATHER_RAIN_MAX, 1, 100); /* 1 rain == 0.1 mm*/
-	if (temp < 1)
-		temp = 1;
-	if (temp > 100)
-		temp = 100;
-	return temp;
+
+uint8_t get_weather_humidity() {
+	static uint8_t ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.main_humidity;
+	}
+	ret = constrain(ret, 0, 100);
+	return ret;
 }
-uint8_t read_weather_snow() {
-	uint8_t temp = map_esp(weather_esp.snow, WEATHER_SNOW_MIN, WEATHER_SNOW_MAX, 1, 100); /* 1 rain == 0.1 mm*//* 1 snow == 0.1 mm*/
-	if (temp < 1)
-		temp = 1;
-	if (temp > 100)
-		temp = 100;
-	return temp;
+float get_weather_wind() {
+	static float ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.wind_speed;
+	}
+	ret = constrain(ret, 0, 45);
+	return ret;
 }
-uint16_t read_weather_press() {
-	return weather_esp.pressure;
+uint8_t get_weather_clouds() {
+	static uint8_t ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.clouds_all;
+	}
+	ret = constrain(ret, 0, 100);
+	return ret;
 }
-uint8_t read_wifi() {
-	return weather_esp.wifi; /*5 == connecting, 10 == connected, 20 == disconnected*/
+float get_weather_rain() {
+	static float ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.rain_1h;
+	}
+	ret = constrain(ret, 0, 45);
+	return ret;
+}
+float get_weather_snow() {
+	static float ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.snow_1h;
+	}
+	ret = constrain(ret, 0, 45);
+	return ret;
+}
+uint16_t get_weather_press() {
+	static uint16_t ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.main_pressure;
+	}
+	ret = constrain(ret, 200, 1500);
+	return ret;
+}
+uint8_t get_wifi() {
+	static uint8_t ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.wifiStatus;
+	}
+	ret = constrain(ret, 0, 2);
+	return ret;
 }
 /*
  ****** WIND m/s

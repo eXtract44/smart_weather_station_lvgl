@@ -1,0 +1,6 @@
+../Core/peripherals/Src/adc.c:7:7:map_adc	0	static
+../Core/peripherals/Src/adc.c:11:7:temt6000_read	0	static
+../Core/peripherals/Src/adc.c:18:10:read_battery	0	static
+../Core/peripherals/Src/adc.c:28:9:read_battery_status	8	static
+../Core/peripherals/Src/adc.c:37:10:read_potentiometer	0	static
+../Core/peripherals/Src/adc.c:47:9:read_volume_dfplayer	0	static
