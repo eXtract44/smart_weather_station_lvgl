@@ -1,4 +1,4 @@
-  struct espPacket_ {
+  typedef struct espPacket_ {
   char uartKey[3];
   int  tm_sec;
   int tm_min;
@@ -7,6 +7,7 @@
   int tm_mon;
   int tm_wday;
   int tm_year;
+  int tm_user_offset_sec;
   char wifiSSID[40];
   int wifiStatus;
   int wifiSignal;
@@ -42,4 +43,4 @@
   int timezone;
   unsigned long id;
   /*String name;*/
-};
+}espPacket_;

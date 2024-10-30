@@ -1,4 +1,0 @@
-../Core/peripherals/Src/buzzer.c:9:7:map_buz	0	static
-../Core/peripherals/Src/buzzer.c:12:6:buzzer_delay	0	static
-../Core/peripherals/Src/buzzer.c:15:6:start_buzzer	0	static
-../Core/peripherals/Src/buzzer.c:26:6:beep	0	static

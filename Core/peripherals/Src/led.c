@@ -1,6 +1,8 @@
+#include "../smart_weather_station_lvgl/Core/peripherals/Inc/led.h"
+
 #include "stm32f4xx_hal.h"
-#include "../peripherals/Inc/led.h"
-#include "main.h"
+
+#include "../smart_weather_station_lvgl/Core/Inc/main.h"
 
 
 

@@ -1,200 +1,49 @@
+#include "../smart_weather_station_lvgl/Core/peripherals/Inc/esp.h"
+
 #include <stdbool.h>
 #include "stm32f4xx_hal.h"
-#include "../peripherals/Inc/esp.h"
-#include "../peripherals/Inc/median.h"
+#include <../ESP8266_Weather/data.h>
 
-#include "../ESP8266_Weather/data.h"
+#include "../smart_weather_station_lvgl/Core/peripherals/Inc/median.h"
+#include "../smart_weather_station_lvgl/ESP8266_Weather/data.h"
 
 extern UART_HandleTypeDef huart2;
 
 espPacket_ espPacket;
 
 uint8_t rxBuffer[sizeof(espPacket)];
-uint8_t dataAvailable = 0;
+uint8_t dataCorrect = 0;
 
 // UART Callback, um die Daten bei Empfang zu verarbeiten
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-    if (huart->Instance == USART2) {  // Sicherstellen, dass die Daten von USART2 kommen
-        // Struktur aus dem rxBuffer in `receivedData` kopieren
-        memcpy(&espPacket, rxBuffer, sizeof(espPacket_));
-        // Prüfen, ob das Präfix korrekt ist
-        if (strncmp(espPacket.uartKey, "ESP", 3) == 0) {
-        	dataAvailable = 1;
-            // Daten sind gültig; Sie können jetzt auf temperature, humidity und lightLevel zugreifen
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//TODO
-
-uint8_t uart_esp_rx_buffer[NUMBER_OF_RX_BYTES_ESP] = { 0 };
-#define TIME_HOUR_OFFSET 0
-
-//#define SIMULATE_ESP_VALUES
-
-time_t time_esp = { 0 };
-weather_t weather_esp = { 0 };
-
-int16_t constrain_values(const int16_t value, int16_t old_value, const int16_t in_min, const int16_t in_max) {
-	if (value >= in_min && value < in_max + 1) {
-		return value;
+	if (huart->Instance == USART2) {  // Sicherstellen, dass die Daten von USART2 kommen
+		// Struktur aus dem rxBuffer in `receivedData` kopieren
+		memcpy(&espPacket, rxBuffer, sizeof(espPacket_));
+		// Prüfen, ob das Präfix korrekt ist
+		if (strncmp(espPacket.uartKey, "ESP", 3) == 0) {
+			dataCorrect = 1;
+			// Daten sind gültig; Sie können jetzt auf temperature, humidity und lightLevel zugreifen
+		}
 	}
-	return old_value;
-}
-bool check_valid() {
-	return dataAvailable;
-}
-
-void esp_read() {
-#ifdef SIMULATE_ESP_VALUES
-	static int16_t temp[9] = { 0 };
-	static int16_t temp_t = -250;
-	static uint16_t temp_p = 850;
-	temp[0]++;
-	if (temp[0] > 60) {
-		temp[0] = 1;
-		temp[1]++;
-		if (temp[1] > 12)
-			temp[1] = 1;
-		time_esp.hour = temp[1];
-	}
-	time_esp.minute = temp[0];
-
-	temp[2]++;
-	if (temp[2] > 31){
-		temp[2] = 1;
-	}
-
-	time_esp.mday = temp[2];
-
-	time_esp.month = temp[1];
-
-	temp[3]++;
-	if (temp[3] > 7)
-		temp[3] = 1;
-	time_esp.wday = temp[3];
-
-	temp[4] = temp[4] + 5;
-	if (temp[4] > 100)
-		temp[4] = 1;
-	weather_esp.clouds = temp[4];
-
-	weather_esp.humidity = temp[4];
-
-	temp[5] = temp[5] + 10;
-	if (temp[5] > 500)
-		temp[5] = 1;
-	weather_esp.rain = temp[5];
-	weather_esp.snow = temp[5];
-
-	temp_p = temp_p + 5;
-	if (temp_p > 1100)
-		temp_p = 830;
-	weather_esp.pressure = temp_p;
-
-	weather_esp.wind = temp[4];
-	temp[7] = temp[7] + 5;
-	if (temp[7] > 20)
-		temp[7] = 5;
-	weather_esp.wifi = temp[7];
-
-	temp_t = temp_t + 5;
-	if (temp_t > 600)
-		temp_t = -250;
-	weather_esp.temperature_raw = temp_t;
-
-#else
-	int16_t value_temp_esp, median_temp_esp = 0;
-	if (check_valid(ADDRESS_TIME_MIN)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		//median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_minute], value_temp_esp);
-		//time_esp.minute = constrain_values(median_temp_esp, time_esp.minute, 0, 60); /*min 0 max 60 minute*/
-		time_esp.minute = constrain_values(value_temp_esp, time_esp.minute, 0, 60); /*min 0 max 60 minute*/
-	} else if (check_valid(ADDRESS_TIME_HOUR)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		//median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_hour], value_temp_esp);
-		//time_esp.hour = constrain_values(median_temp_esp, time_esp.hour, 0, 24); /*min 0 max 24 hour*/
-		time_esp.hour = constrain_values(value_temp_esp, time_esp.hour, 0, 24); /*min 0 max 24 hour*/
-	} else if (check_valid(ADDRESS_TIME_MDAY)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_mday], value_temp_esp);
-		time_esp.mday = constrain_values(median_temp_esp, time_esp.mday, 1, 31); /*min 1 max 31 mday*/
-	} else if (check_valid(ADDRESS_TIME_MON)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_month], value_temp_esp);
-		time_esp.month = constrain_values(median_temp_esp, time_esp.month, 1, 12); /*min 1 max 12 month*/
-	} else if (check_valid(ADDRESS_TIME_WDAY)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_wday], value_temp_esp);
-		time_esp.wday = constrain_values(median_temp_esp, time_esp.wday, 1, 7); /*min 1 max 7 wday*/
-	} else if (check_valid(ADDRESS_WEATHER_CLOUD)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_clouds], value_temp_esp);
-		weather_esp.clouds = constrain_values(median_temp_esp, weather_esp.clouds, WEATHER_CLOUD_MIN,
-				WEATHER_CLOUD_MAX); /*min 0 max 100%*/
-	} else if (check_valid(ADDRESS_WEATHER_TEMP)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_temperature_raw], value_temp_esp);
-		weather_esp.temperature_raw = constrain_values(median_temp_esp, weather_esp.temperature_raw, WEATHER_TEMP_MIN,
-		WEATHER_TEMP_MAX); /* min -25 , max 50*c*/
-	} else if (check_valid(ADDRESS_WEATHER_HUMI)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_humidity], value_temp_esp);
-		weather_esp.humidity = constrain_values(median_temp_esp, weather_esp.humidity, WEATHER_HUMI_MIN,
-				WEATHER_HUMI_MAX); /*min 0 max 100%*/
-	} else if (check_valid(ADDRESS_WEATHER_RAIN)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_rain], value_temp_esp);
-		weather_esp.rain = constrain_values(median_temp_esp, weather_esp.rain, WEATHER_RAIN_MIN, WEATHER_RAIN_MAX); /*max 50 mm/h*/
-	} else if (check_valid(ADDRESS_WEATHER_PRESS)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_pressure], value_temp_esp);
-		weather_esp.pressure = constrain_values(median_temp_esp, weather_esp.pressure, WEATHER_PRESS_MIN,
-				WEATHER_PRESS_MAX); /*min 750 max 1200 hPa*/
-	} else if (check_valid(ADDRESS_WEATHER_WIND)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_wind], value_temp_esp);
-		weather_esp.wind = constrain_values(median_temp_esp, weather_esp.wind, WEATHER_WIND_MIN, WEATHER_WIND_MAX); /*max 40m/s*/
-	} else if (check_valid(ADDRESS_WIFI_STATUS)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_wifi], value_temp_esp);
-		weather_esp.wifi = constrain_values(median_temp_esp, weather_esp.wifi, WEATHER_WIFI_MIN, WEATHER_WIFI_MAX);
-	} else if (check_valid(ADDRESS_WEATHER_SNOW)) {
-		value_temp_esp = convertBytesToInt16(uart_esp_rx_buffer);
-		median_temp_esp = MEDIANFILTER_Insert(&medianFilter_esp[median_snow], value_temp_esp);
-		weather_esp.snow = constrain_values(median_temp_esp, weather_esp.snow, WEATHER_SNOW_MIN, WEATHER_SNOW_MAX); /*max 1 mm/h*/
-	}
-#endif
 }
 
 uint8_t read_time_hour() {
-	uint8_t temp = 0;
-	if(time_esp.hour == 0)temp = 23;
-	else temp = time_esp.hour - TIME_HOUR_OFFSET;
-	return temp;
+	static uint8_t ret = 0;
+	if (dataCorrect) {
+		ret = espPacket.tm_hour - espPacket.tm_user_offset_sec / 3600;
+	}
+	ret = constrain(ret, 0, 23);
+	return ret;
 }
 uint8_t read_time_minute() {
+	static uint8_t ret = 0;
+		if (dataCorrect) {
+			ret = espPacket
+		}
+		ret = constrain(ret, 0, 23);
+		return ret;
+
+
 	return time_esp.minute;
 }
 uint8_t read_time_mday() {

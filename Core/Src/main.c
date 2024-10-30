@@ -17,22 +17,19 @@
  */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/Inc/main.h"
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-#include "../peripherals/Inc/ili9486.h"
-#include "../lvgl/lvgl.h"
-#include "../menu/Inc/lvgl_menu.h"
-//#include "../lvgl/examples/lv_examples.h"
-#include "../lvgl/lv_port_indev.h"
-#include "../peripherals/Inc/esp.h"
-#include "../peripherals/Inc/adc.h"
-#include "../peripherals/Inc/led.h"
-#include "../peripherals/Inc/aht10.h"
-#include "../peripherals/Inc/sgp30.h"
-#include "../peripherals/Inc/vl53l0x.h"
-#include "../peripherals/Inc/dfplayer_mini.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/lvgl/lv_port_indev.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/lvgl/lvgl.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/menu/Inc/lvgl_menu.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/adc.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/aht10.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/dfplayer_mini.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/esp.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/ili9486.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/led.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/sgp30.h"
+#include "../../../../F446_SMARTROOM_BIG_V1/smart_weather_station_lvgl/Core/peripherals/Inc/vl53l0x.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -72,7 +69,8 @@ SRAM_HandleTypeDef hsram1;
 /* USER CODE BEGIN PV */
 VL53L0X sensor1; //Struct in "VL53L0X.h"
 extern volatile uint16_t adc_data[];
-extern uint8_t uart_esp_rx_buffer[];
+extern uint8_t rxBuffer[sizeof(espPacket)];
+extern espPacket_ espPacket;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -148,7 +146,7 @@ int main(void) {
 	/* USER CODE BEGIN 2 */
 	toggle_led();
 	HAL_Delay(300);
-	HAL_UART_Receive_DMA(&huart2, uart_esp_rx_buffer, NUMBER_OF_RX_BYTES_ESP); /*Initialization UART2 peripheral with DMA for ESP32 data*/
+	HAL_UART_Receive_DMA(&huart2, rxBuffer, sizeof(espPacket)); /*Initialization UART2 peripheral with DMA for ESP32 data*/
 	HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_1); /*Initialization PWM TIM12 CH1 peripheral for Buzzer*/
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4); /*Initialization PWM TIM3 CH4 peripheral for display brightness*/
 	toggle_led();

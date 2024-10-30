@@ -1,3 +1,0 @@
-../Core/peripherals/Src/range.c:9:10:read_standby_time	0	static
-../Core/peripherals/Src/range.c:12:9:range_read	8	static
-../Core/peripherals/Src/range.c:20:6:range_handler	8	static

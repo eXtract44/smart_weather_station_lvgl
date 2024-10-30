@@ -1,6 +1,0 @@
-../Core/lvgl/src/extra/themes/mono/../../../../src/hal/../draw/../misc/lv_color.h:685:26:lv_color_white	1
-../Core/lvgl/src/extra/themes/mono/../../../../src/hal/../draw/../misc/lv_color.h:689:26:lv_color_black	1
-../Core/lvgl/src/extra/themes/mono/lv_theme_mono.c:194:13:theme_apply	35
-../Core/lvgl/src/extra/themes/mono/../../../../src/core/../misc/lv_style.h:427:20:lv_style_set_pad_all	1
-../Core/lvgl/src/extra/themes/mono/lv_theme_mono.c:488:13:style_init_reset	2
-../Core/lvgl/src/extra/themes/mono/lv_theme_mono.c:167:14:lv_theme_mono_init	20

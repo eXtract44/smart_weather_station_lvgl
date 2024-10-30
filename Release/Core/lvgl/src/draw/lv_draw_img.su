@@ -1,8 +1,0 @@
-../Core/lvgl/src/draw/lv_draw_img.c:646:13:show_error	112	static
-../Core/lvgl/src/draw/lv_draw_img.c:341:35:lv_draw_map	248	static
-../Core/lvgl/src/draw/lv_draw_img.c:59:6:lv_draw_img_dsc_init	8	static
-../Core/lvgl/src/draw/lv_draw_img.c:102:9:lv_img_cf_get_px_size	0	static
-../Core/lvgl/src/draw/lv_draw_img.c:147:6:lv_img_cf_is_chroma_keyed	0	static
-../Core/lvgl/src/draw/lv_draw_img.c:174:6:lv_img_cf_has_alpha	0	static
-../Core/lvgl/src/draw/lv_draw_img.c:76:6:lv_draw_img	88	static
-../Core/lvgl/src/draw/lv_draw_img.c:207:14:lv_img_src_get_type	0	static
